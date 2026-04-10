@@ -1,0 +1,19 @@
+User (UserID, Name, Email, Password, Role)
+│
+├── Seller (Role = 'Seller')
+│     └── Product (ProductID, Name, Price, CategoryID, SellerID)
+│           └── Category (CategoryID, CategoryName)
+│
+├── Buyer (Role = 'Buyer')
+│     ├── Cart (CartID, BuyerID)
+│     │     └── CartItem (CartItemID, CartID, ProductID, Quantity)
+│     │           └── Product
+│     │
+│     └── Order (OrderID, BuyerID, OrderDate, Status, TotalAmount)
+│           ├── OrderItem (OrderItemID, OrderID, ProductID, Quantity, Price)
+│           │     └── Product
+│           ├── Payment (PaymentID, OrderID, Amount, Method, Status, Date)
+│           └── Shipping (ShippingID, OrderID, Address, Status, Date)
+│
+└── Admin (Role = 'Admin')
+      └── Oversees Sellers (conceptual, enforced at application level)

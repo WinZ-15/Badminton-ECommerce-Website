@@ -1,0 +1,31 @@
+One User table stores all accounts.
+
+Each User has a Role attribute (Admin, Seller, Buyer).
+
+An Admin can manage many Sellers.
+
+A Seller can list many Products.
+
+Each Product belongs to exactly one Seller.
+
+Each Product belongs to exactly one Category.
+
+A Buyer can have exactly one Cart.
+
+A Cart is uniquely tied to a single Buyer.
+
+A Cart can contain many CartItems.
+
+Each CartItem references one Product and specifies its Quantity.
+
+A Buyer can place many Orders.
+
+Each Order belongs to exactly one Buyer.
+
+An Order can contain many OrderItems.
+
+Each OrderItem references one Product and specifies its Quantity and Price.
+
+Each Order has exactly one Payment record.
+
+A Payment must be linked to a valid Order.

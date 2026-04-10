@@ -1,0 +1,6 @@
+User creates a Cart
+Adds Products → creating Cart Items
+Proceeds to checkout → creates an Order
+Cart Items → become Order Items
+Payment is processed → stored in Payment
+Delivery details → stored in Shipping
