@@ -1,45 +1,56 @@
-User Accounts
+Business Rules According to ERD
+Customer–Order Relationship
 
-All accounts are stored in a single User table.
+A Customer can place many Orders.
 
-Each User has a Role attribute (Admin, Seller, Buyer).
+Each Order belongs to exactly one Customer.
 
-Admin–Seller Relationship
+Order–Order_Item Relationship
 
-An Admin can manage many Sellers.
+An Order can contain many Order_Items.
 
-Sellers must be linked to a valid Admin for management purposes.
+Each Order_Item belongs to exactly one Order.
 
-Seller–Product Relationship
+Product–Order_Item Relationship
 
-A Seller can list many Products.
+A Product can appear in many Order_Items.
 
-Each Product belongs to exactly one Seller.
+Each Order_Item references exactly one Product.
+
+Product–Category Relationship
 
 Each Product belongs to exactly one Category.
 
-Buyer–Cart Relationship
+A Category can contain many Products.
 
-A Buyer can have exactly one Cart.
+Customer Attributes
 
-A Cart is uniquely tied to a single Buyer.
+Each Customer has a unique customer_id.
 
-A Cart can contain many CartItems.
+Customers are identified by unique email.
 
-Each CartItem references one Product and specifies its Quantity.
+Each Customer has a role attribute (Admin, Seller, Buyer).
 
-Buyer–Order Relationship
+Order Attributes
 
-A Buyer can place many Orders.
+Each Order has a unique order_id.
 
-Each Order belongs to exactly one Buyer.
+Orders track order_date, total_amount, and status.
 
-An Order can contain many OrderItems.
+Order_Item Attributes
 
-Each OrderItem references one Product and specifies its Quantity and Price.
+Each Order_Item has a unique order_item_id.
 
-Order–Payment Relationship
+Order_Items specify quantity and price for the Product ordered.
 
-Each Order has exactly one Payment record.
+Product Attributes
 
-A Payment must be linked to a valid Order.
+Each Product has a unique product_id.
+
+Products include brand, stock, image, price, name, and description.
+
+Category Attributes
+
+Each Category has a unique category_id.
+
+Categories are identified by category_name.
