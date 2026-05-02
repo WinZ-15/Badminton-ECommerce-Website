@@ -1,0 +1,45 @@
+User Accounts
+
+All accounts are stored in a single User table.
+
+Each User has a Role attribute (Admin, Seller, Buyer).
+
+Admin–Seller Relationship
+
+An Admin can manage many Sellers.
+
+Sellers must be linked to a valid Admin for management purposes.
+
+Seller–Product Relationship
+
+A Seller can list many Products.
+
+Each Product belongs to exactly one Seller.
+
+Each Product belongs to exactly one Category.
+
+Buyer–Cart Relationship
+
+A Buyer can have exactly one Cart.
+
+A Cart is uniquely tied to a single Buyer.
+
+A Cart can contain many CartItems.
+
+Each CartItem references one Product and specifies its Quantity.
+
+Buyer–Order Relationship
+
+A Buyer can place many Orders.
+
+Each Order belongs to exactly one Buyer.
+
+An Order can contain many OrderItems.
+
+Each OrderItem references one Product and specifies its Quantity and Price.
+
+Order–Payment Relationship
+
+Each Order has exactly one Payment record.
+
+A Payment must be linked to a valid Order.
