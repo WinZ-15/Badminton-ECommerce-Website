@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2026 at 09:08 AM
+-- Generation Time: May 03, 2026 at 03:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `category` (
 
 CREATE TABLE `order` (
   `order_ID` int(11) NOT NULL,
-  `user_ID` int(11) DEFAULT NULL,
+  `user_ID` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
   `status` enum('Pending','Shipped','Delivered','Cancelled') NOT NULL
@@ -54,8 +54,8 @@ CREATE TABLE `order` (
 
 CREATE TABLE `order_item` (
   `order_item_ID` int(11) NOT NULL,
-  `product_ID` int(11) DEFAULT NULL,
-  `order_ID` int(11) DEFAULT NULL,
+  `product_ID` int(11) NOT NULL,
+  `order_ID` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -71,10 +71,11 @@ CREATE TABLE `product` (
   `name` varchar(100) NOT NULL,
   `description` text DEFAULT NULL,
   `brand` varchar(50) DEFAULT NULL,
-  `stock` int(11) NOT NULL,
+  `stock` int(11) DEFAULT 0,
   `image` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
-  `category_ID` int(11) DEFAULT NULL
+  `category_ID` int(11) DEFAULT NULL,
+  `user_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,8 +102,7 @@ CREATE TABLE `user` (
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_ID`),
-  ADD UNIQUE KEY `category_name` (`category_name`);
+  ADD PRIMARY KEY (`category_ID`);
 
 --
 -- Indexes for table `order`
@@ -124,7 +124,8 @@ ALTER TABLE `order_item`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_ID`),
-  ADD KEY `category_ID` (`category_ID`);
+  ADD KEY `category_ID` (`category_ID`),
+  ADD KEY `user_ID` (`user_ID`);
 
 --
 -- Indexes for table `user`
@@ -188,7 +189,8 @@ ALTER TABLE `order_item`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_ID`) REFERENCES `category` (`category_ID`);
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_ID`) REFERENCES `category` (`category_ID`),
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
