@@ -1,9 +1,9 @@
 Business Rules According to ERD
-Customer–Order Relationship
+User–Order Relationship
 
-A Customer can place many Orders.
+A User can place many Orders.
 
-Each Order belongs to exactly one Customer.
+Each Order belongs to exactly one User.
 
 Order–Order_Item Relationship
 
@@ -23,34 +23,34 @@ Each Product belongs to exactly one Category.
 
 A Category can contain many Products.
 
-Customer Attributes
+User Attributes
 
-Each Customer has a unique customer_id.
+Each User has a unique user_ID.
 
-Customers are identified by unique email.
+Users are identified by unique email.
 
-Each Customer has a role attribute (Admin, Seller, Buyer).
+Each User has a role attribute (Admin, Seller, Buyer).
 
 Order Attributes
 
-Each Order has a unique order_id.
+Each Order has a unique order_ID.
 
 Orders track order_date, total_amount, and status.
 
 Order_Item Attributes
 
-Each Order_Item has a unique order_item_id.
+Each Order_Item has a unique order_item_ID.
 
 Order_Items specify quantity and price for the Product ordered.
 
 Product Attributes
 
-Each Product has a unique product_id.
+Each Product has a unique product_ID.
 
 Products include brand, stock, image, price, name, and description.
 
 Category Attributes
 
-Each Category has a unique category_id.
+Each Category has a unique category_ID.
 
 Categories are identified by category_name.
