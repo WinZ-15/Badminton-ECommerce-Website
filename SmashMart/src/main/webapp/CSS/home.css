@@ -1,0 +1,153 @@
+@import url("auth.css");
+
+/* Base layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  background: #2c2c2c;              /* slightly softer black */
+  color: #fff;
+  padding: 0.4rem 1.2rem;           /* thinner height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25); /* subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 36px;   /* smaller logo */
+  width: auto;
+  margin-right: 8px;
+}
+.logo-text {
+  font-size: 1.3rem;                 /* slightly smaller text */
+  font-weight: 700;
+  color: #00c896;                    /* green accent */
+  letter-spacing: 0.5px;
+}
+.navbar nav a {
+  margin-left: 1rem;
+  color: #ddd;                       /* softer link color */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar nav a:hover {
+  color: #00c896;
+}
+.nav-btn {
+  background: #009f75;
+  padding: 0.3rem 0.8rem;   /* slimmer buttons */
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.nav-btn:hover {
+  background: #00d9a5;
+  transform: scale(1.05);
+}
+
+/* Hero */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  align-items: center;     /* center horizontally */
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #00c896, #009f75);
+  color: #fff;
+}
+.hero p {
+  max-width: 600px;
+  margin: 1rem auto;
+  line-height: 1.6;
+}
+.hero-buttons {
+  margin-top: 1.5rem;
+}
+.btn {
+  background: #fff;
+  color: #009f75;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* Trust Badges */
+.trust {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: #eee;
+}
+.trust-item {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Testimonials */
+.testimonials {
+  background: #f1f1f1;
+  padding: 2rem;
+  text-align: center;
+}
+.testi-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.testi-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 250px;
+  font-size: 0.9rem;
+}
+.testi-card p {
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+.testi-card span {
+  font-weight: 600;
+  color: #009f75;
+  font-size: 0.85rem;
+}
+
+/* Footer */
+footer {
+  background: #2c2c2c;               /* match navbar */
+  color: #ccc;                       /* softer text */
+  text-align: center;
+  padding: 0.6rem;                   /* thinner footer */
+  margin-top: auto;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.25); /* subtle top shadow */
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.85rem;
+}
