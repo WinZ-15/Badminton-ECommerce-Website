@@ -45,7 +45,7 @@
           <i data-feather="shopping-cart"></i>
           <span class="badge badge-green">3</span>
         </button>
-        <a href="#" class="btn-signin">Sign In</a>
+        <a href="${pageContext.request.contextPath}/login" class="btn-signin">Sign In</a>
         <button class="mobile-menu-btn">
           <i data-feather="menu"></i>
         </button>
