@@ -1,8 +1,7 @@
 package Controllers;
 
-import DOA.ProductDAO;
+import Dao.ProductDAO;
 import Model.Product;
-import Model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,11 +9,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 
-@WebServlet(name = "AddProductServlet", urlPatterns = {"/addProduct"})
+@WebServlet(name = "AddProductServlet", urlPatterns = {"/AddProduct"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50) // 50MB
@@ -25,13 +25,21 @@ public class AddProductServlet extends HttpServlet {
         String brand = req.getParameter("brand");
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
-        int categoryId = Integer.parseInt(req.getParameter("category_ID"));
+        int categoryID = Integer.parseInt(req.getParameter("categoryID"));
       
        int sellerId = 1;
         Part filePart = req.getPart("image");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String uploadPath = getServletContext().getRealPath("/") + "Resources/" + fileName;
-        filePart.write(uploadPath);
+        String uploadPath = getServletContext().getRealPath("/") + "Resources";
+
+        // ✅ create folder if not exists
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+
+        //  save file
+        filePart.write(uploadPath + "/" + fileName);
 
         Product p = new Product();
         p.setName(name);
@@ -40,15 +48,14 @@ public class AddProductServlet extends HttpServlet {
         p.setPrice(price);
         p.setImage("Resources/" + fileName);
         p.setUserId(sellerId);
-          p.setCategoryID(categoryId); 
+        p.setCategoryID(categoryID); 
 
         ProductDAO dao = new ProductDAO();
         try {
             dao.insertProduct(p);
         } catch (SQLException ex) {
-            System.getLogger(AddProductServlet.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.out.println("Error: " + ex.getMessage());
         }
-
-        resp.sendRedirect("sellerDashboard");
+        resp.sendRedirect("adminDashboard");
     }
 }

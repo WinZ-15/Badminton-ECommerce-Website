@@ -1,6 +1,6 @@
 package Controllers;
 
-import DOA.ProductDAO;
+import Dao.ProductDAO;
 import Model.Product;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,22 +20,25 @@ public class UpdateProductServlet extends HttpServlet {
         String brand = req.getParameter("brand");
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
+        
+        if (name == null || name.isEmpty()) {
+            resp.sendRedirect("editProduct?error=1");
+            return;
+        }
 
-        Product p = new Product();
-        p.setProductID(id);
-        p.setName(name);
-        p.setBrand(brand);
-        p.setDescription(description);
-        p.setPrice(price);
+        Product product = new Product();
+        product.setProductID(id);
+        product.setName(name);
+        product.setBrand(brand);
+        product.setDescription(description);
+        product.setPrice(price);
 
         ProductDAO dao = new ProductDAO();
         try {
-            dao.updateProduct(p);
+            dao.updateProduct(product);
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw new ServletException("Update failed", ex);
+            System.out.println("Error updating product: " + ex.getMessage());
         }
-
-        resp.sendRedirect("sellerDashboard");
+        resp.sendRedirect("adminDashboard");
     }
 }

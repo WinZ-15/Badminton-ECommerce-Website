@@ -1,6 +1,6 @@
 package Controllers;
 
-import DOA.ProductDAO;
+import Dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,18 +15,13 @@ public class DeleteProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         try {
-            int id = Integer.parseInt(req.getParameter("product_ID"));
-
+            int id = Integer.parseInt(req.getParameter("productID"));
             ProductDAO dao = new ProductDAO();
             dao.deleteProduct(id);
-
         } catch (SQLException | NumberFormatException ex) {
-            ex.printStackTrace();
-            throw new ServletException("Delete failed", ex);
+           System.out.println("Error deleting product: " + ex.getMessage());
         }
-
-        resp.sendRedirect("sellerDashboard");
+        resp.sendRedirect("adminDashboard");
     }
 }

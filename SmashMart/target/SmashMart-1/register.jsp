@@ -1,66 +1,74 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - SmashMart</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/auth.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register - SmashMart</title>
+        <link rel="stylesheet" href="./CSS/Start.css">
+    </head>
+    <body>
 
-<header>
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="${pageContext.request.contextPath}/Resources/logo.png" class="logo-img">
-            <h1 class="logo-text">SmashMart</h1>
-        </div>
-    </nav>
-</header>
+        <header>
+            <nav class="navbar">
+                <div class="logo-container">
 
-<main class="auth-container">
-    <section class="auth-card">
+                    <a class="logo-text" href="${pageContext.request.contextPath}/home">SmashMart</a>
+                </div>
+            </nav>
+        </header>
 
-        <h2>Create Account</h2>
-        <p class="subtitle">Join SmashMart today!</p>
+        <main class="auth-container">
+            <section class="auth-card">
 
-        <form action="${pageContext.request.contextPath}/register" method="post">
+                <h2>Create Account</h2>
+                <p class="subtitle">Join SmashMart today!</p>
 
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="fullName" placeholder="Enter your full name" required>
-            </div>
+                <c:if test="${not empty error}">
+                    <div class="error-message">
+                        ${error}
+                    </div>
+                </c:if>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Enter your email" required>
-            </div>
+                <form action="${pageContext.request.contextPath}/register" method="post">
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" placeholder="Create a password" required>
-            </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" placeholder="Enter your full name" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
-            </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
 
-            <button type="submit" class="auth-btn">Register</button>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Create a password" required>
+                    </div>
 
-            <p class="switch">
-                Already have an account?
-                <a href="${pageContext.request.contextPath}/login">Login</a>
-            </p>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
 
-        </form>
+                    <button type="submit" class="auth-btn">Register</button>
 
-    </section>
-</main>
+                    <p class="switch">
+                        Already have an account?
+                        <a href="${pageContext.request.contextPath}/login">Login</a>
+                    </p>
 
-<footer>
-    <p>&copy; 2026 SmashMart. All rights reserved.</p>
-</footer>
+                </form>
 
-</body>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 SmashMart. All rights reserved.</p>
+        </footer>
+
+    </body>
 </html>

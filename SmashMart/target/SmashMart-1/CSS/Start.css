@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+
+    background:
+        linear-gradient(135deg, rgba(90,79,255,0.25), rgba(165,0,255,0.25)),
+        url("../Resources/badminton.png") no-repeat center center fixed;
+
+    background-size: cover;
+
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;   /* logo stays left */
+    background: #222;
+    padding: 0.8rem 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+.logo {
+    font-size: 1.4rem;
+}
+
+/* Auth Container */
+.auth-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.auth-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(240,255,250,0.85));
+    backdrop-filter: blur(14px);
+    border-radius: 28px;              /* rounder corners */
+    padding: 3.5rem;
+    width: 500px;                     /* slightly wider */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradient border effect */
+.auth-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    padding: 2px; /* thickness of border */
+    background: linear-gradient(135deg, #5a4fff, #a500ff);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+
+.auth-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+.auth-card h2 {
+    color: #5a4fff;
+    margin-bottom: 0.5rem;
+}
+.subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Form */
+.form-group {
+    text-align: left;
+    margin-bottom: 1.2rem;
+}
+.form-group label {
+    font-size: 0.85rem;
+    color: #5a4fff;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 0.3rem;
+    transition: border 0.3s;
+}
+.form-group input:focus, .form-group select:focus {
+    border-color: #5a4fff;
+    outline: none;
+}
+
+/* Button */
+.auth-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #5a4fff, #a500ff);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+.auth-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #6b5dff, #b300ff);
+}
+
+/* Switch Link */
+.switch {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+}
+.switch a {
+    color: #009f75;
+    text-decoration: none;
+    font-weight: 600;
+}
+.switch a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #222;
+    color: #fff;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 36px;   /* smaller logo */
+    width: auto;
+    margin-right: 8px;
+}
+.logo-text {
+    font-size: 1.3rem;                 /* slightly smaller text */
+    font-weight: 700;
+    color: #5a4fff;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+

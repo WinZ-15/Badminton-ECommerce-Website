@@ -1,15 +1,19 @@
 package Model;
+
 import java.time.LocalDateTime;
 
 public class Order {
+
     private Integer orderID;
     private Integer userID;
-    private LocalDateTime orderDate;
+
     private String status;
     private Double totalAmount;
 
-    public Order() {
-    }
+    private LocalDateTime createdAt;   // ✅ important
+    private LocalDateTime updatedAt;   // ✅ optional
+
+    public Order() {}
 
     public Integer getOrderID() {
         return orderID;
@@ -25,14 +29,6 @@ public class Order {
 
     public void setUserID(Integer userID) {
         this.userID = userID;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
     }
 
     public String getStatus() {
@@ -51,4 +47,19 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

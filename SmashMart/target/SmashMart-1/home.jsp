@@ -4,66 +4,142 @@
     <head>
         <meta charset="UTF-8">
         <title>SmashMart | Welcome</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/home.css">
+        <link rel="stylesheet" href="./CSS/home.css">
     </head>
     <body>
-        <!-- Navbar -->
+
+        <!-- ✅ NAVBAR -->
         <header class="navbar">
-            <div class="logo-container">
-                <img src="${pageContext.request.contextPath}/Resources/logo.png" alt="SmashMart Logo" class="logo-img">
-                <h1 class="logo-text">SmashMart</h1>
+            <div class="container nav-container">
+                <div class="logo">SmashMart</div>
+                <div class =" nav-mid">  
+                    <a href="Pages/about.html">About</a>
+                    <a href="Pages/contact.html">Contact</a>
+                </div>
+                <div class="nav-right">
+                    <a href="${pageContext.request.contextPath}/login" class="nav-log">Login</a>
+                    <a href="${pageContext.request.contextPath}/register" class="nav-btn">Register</a>
+                </div>
             </div>
-            <nav>
-                <a href="${pageContext.request.contextPath}/login" class="nav-btn">Login</a>
-                <a href="${pageContext.request.contextPath}/register" class="nav-btn">Register</a>
-            </nav>
         </header>
 
-        <!-- Hero Section -->
+        <!-- ✅ HERO -->
         <section class="hero">
-            <h2>Welcome to SmashMart</h2>
-            <p>
-                SmashMart is your one-stop badminton marketplace.  
-                We specialize in premium <strong>badminton rackets</strong> and <strong>shuttlecocks</strong>,  
-                designed for players of all levels — from beginners to champions.
-            </p>
-            <div class="hero-buttons">
-                <a href="register.jsp" class="btn">Get Started</a>
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <h1>Elevate Your Badminton Game</h1>
+                    <p>
+                        Discover premium rackets and shuttlecocks designed for performance,
+                        precision, and durability.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="${pageContext.request.contextPath}/register" class="btn primary">Get Started</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Trust Badges -->
+        <!-- ✅ TRUST -->
         <section class="trust">
-            <div class="trust-item">Free Shipping</div>
-            <div class="trust-item">2-Year Warranty</div>
-            <div class="trust-item">30-Day Returns</div>
-            <div class="trust-item">Expert Support</div>
+            <div class="container trust-grid">
+                <div> Free Shipping</div>
+                <div>Warranty</div>
+                <div>Easy Returns</div>
+                <div>Support</div>
+            </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials">
+        <!-- ✅ PRODUCTS -->
+        <section class="products container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <span>Top picks for you</span>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="${pageContext.request.contextPath}/Resources/racket1.jpg">
+                    <h3>Carbon Pro Racket</h3>
+                    <p class="price">$89.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="${pageContext.request.contextPath}/Resources/racket2.jpg">
+                    <h3>Elite Tournament Racket</h3>
+                    <p class="price">$129.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="${pageContext.request.contextPath}/Resources/shuttle.jpg">
+                    <h3>Feather Shuttlecock</h3>
+                    <p class="price">$24.99</p>
+                    <button>Add to Cart</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ✅ CATEGORIES -->
+        <section class="categories">
+            <div class="container">
+                <h2>Shop by Category</h2>
+
+                <div class="category-grid">
+                    <div class="category-card">Rackets</div>
+                    <div class="category-card">Shuttlecocks</div>
+                    <div class="category-card">Accessories</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✅ TESTIMONIALS -->
+        <section class="testimonials container">
             <h2>What Players Say</h2>
+
             <div class="testi-grid">
                 <div class="testi-card">
-                    <p>"SmashMart’s rackets gave me unmatched control and power."</p>
-                    <span>- Marcus Chen, National Player</span>
+                    <p>"Amazing control and power!"</p>
+                    <span>- National Player</span>
                 </div>
+
                 <div class="testi-card">
-                    <p>"The shuttlecocks are tournament quality and last longer."</p>
-                    <span>- Sarah Williams, Club Champion</span>
+                    <p>"High quality and reliable."</p>
+                    <span>- Club Champion</span>
                 </div>
+
                 <div class="testi-card">
-                    <p>"I recommend SmashMart to all my students — best value."</p>
-                    <span>- David Park, Junior Coach</span>
+                    <p>"Best for training players."</p>
+                    <span>- Coach</span>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- ✅ CTA -->
+        <section class="cta">
+            <div class="container">
+                <h2>Upgrade Your Game Today</h2>
+                <p>Join SmashMart and experience professional performance.</p>
+            </div>
+        </section>
+
+        <!-- ✅ FOOTER -->
         <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; 2026 SmashMart. All rights reserved.</p>
+            <div class="container footer-grid">
+                <div>
+                    <h3>SmashMart</h3>
+                    <p>Your trusted badminton marketplace.</p>
+                </div>
+                <br>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 SmashMart
             </div>
         </footer>
+
     </body>
 </html>

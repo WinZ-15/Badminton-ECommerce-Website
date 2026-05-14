@@ -1,19 +1,26 @@
 package Model;
 
+import java.sql.Timestamp;
+
 public class Product {
+
     private Integer productID;
     private String name;
     private String description;
     private Double price;
-    private Integer stock;
     private Integer categoryID;
-    private String brand;  
+    private String brand;
     private int userId;
     private String image;
+    private int quantity;
 
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    public Product() {}
 
     public Product(Integer productID, String name, String brand, String description,
-                   Double price, String image, int userId) {
+                   Double price, String image, int userId , int categoryID) {
         this.productID = productID;
         this.name = name;
         this.brand = brand;
@@ -21,12 +28,9 @@ public class Product {
         this.price = price;
         this.image = image;
         this.userId = userId;
+        this.categoryID=categoryID;
     }
 
- 
-    public Product() {}
-
- 
     public Integer getProductID() {
         return productID;
     }
@@ -59,14 +63,6 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public Integer getCategoryID() {
         return categoryID;
     }
@@ -97,5 +93,29 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
