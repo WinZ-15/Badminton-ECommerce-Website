@@ -1,19 +1,17 @@
 package Model;
-
 import java.sql.Timestamp;
 
-public class OrderItem {
 
+
+public class OrderItem {
     private Integer orderItemID;
     private Integer orderID;
     private Integer productID;
     private Integer quantity;
     private Double subtotal;
-
     private Timestamp createdAt;
 
     public OrderItem() {}
-
     public Integer getOrderItemID() {
         return orderItemID;
     }

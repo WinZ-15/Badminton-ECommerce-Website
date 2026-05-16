@@ -26,11 +26,11 @@ public class UserDAO {
 public boolean registerUser(User user) {
     try {
         final String INSERT_USER =
-        "INSERT INTO User(name,email,password,role,address,phone) VALUES(?,?,?,?,?,?)";
+        "INSERT INTO users(name,email,password,role,address,phone) VALUES(?,?,?,?,?,?)";
 
         PreparedStatement ps = conn.prepareStatement(INSERT_USER);
 
-        ps.setString(1, user.getName());   // ✅ fixed
+        ps.setString(1, user.getName());   
         ps.setString(2, user.getEmail());
         ps.setString(3, user.getPassword());
         ps.setString(4, user.getRole());
@@ -38,7 +38,7 @@ public boolean registerUser(User user) {
         ps.setString(6, user.getPhone());
 
         int result = ps.executeUpdate();
-        return (result > 0);   // ✅ fixed
+        return (result > 0);  
 
     } catch (SQLException ex) {
         System.out.println(ex.getLocalizedMessage());
@@ -46,10 +46,9 @@ public boolean registerUser(User user) {
     }
 }
 
-
     public User loginUser(String email, String password) {
         try {
-            final String LOGIN_SQL = "SELECT * FROM User WHERE email=? AND password=?;";
+            final String LOGIN_SQL = "SELECT * FROM users WHERE email=? AND password=?;";
             PreparedStatement ps = conn.prepareStatement(LOGIN_SQL);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -74,7 +73,7 @@ public boolean registerUser(User user) {
 
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM User";
+        String sql = "SELECT * FROM users";
         try (PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 User user = new User();
@@ -91,20 +90,20 @@ public boolean registerUser(User user) {
     
     public User getUserByEmail(String email) {
         try {
-            final String SQL = "SELECT * FROM User WHERE email=?;";
+            final String SQL = "SELECT * FROM users WHERE email=?;";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                User u = new User();
-                u.setUserID(rs.getInt("userID"));
-                u.setName(rs.getString("name"));
-                u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("password"));
-                u.setRole(rs.getString("role"));
-                u.setAddress(rs.getString("address"));
-                u.setPhone(rs.getString("phone"));
-                return u;
+                User user = new User();
+                user.setUserID(rs.getInt("userID"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
+                user.setAddress(rs.getString("address"));
+                user.setPhone(rs.getString("phone"));
+                return user;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());

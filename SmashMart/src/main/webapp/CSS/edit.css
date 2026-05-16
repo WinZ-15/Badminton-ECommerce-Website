@@ -1,0 +1,146 @@
+/* ===== BODY ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px 0;
+}
+
+.navbar-inner {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-btn {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo-text span {
+    color: #38bdf8;
+}
+
+/* ===== MAIN ===== */
+.content {
+    flex: 1; /* ✅ keeps footer at bottom */
+}
+
+/* ===== HERO ===== */
+.hero {
+    background: white;
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.hero-copy {
+    text-align: center;
+}
+
+.hero-eyebrow {
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.hero h1 {
+    margin: 5px 0;
+}
+
+.accent {
+    color: #1e3a8a;
+}
+
+.hero-sub {
+    color: #666;
+}
+
+/* ===== CARD FORM ===== */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== FORM ===== */
+.product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.product-form input,
+.product-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.product-form textarea {
+    resize: none;
+    min-height: 80px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: #162c6e;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer-inner {
+    width: 90%;
+    margin: auto;
+}
+
+.footer-logo span {
+    color: #38bdf8;
+}

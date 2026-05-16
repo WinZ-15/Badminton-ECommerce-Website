@@ -65,7 +65,7 @@ public class CheckOutServlet extends HttpServlet {
                 return;
             }
 
-            // ✅ 4. Insert Order Items ✅ FIX
+            //  4. Insert Order Items ✅ FIX
             for (int productId : map.keySet()) {
                 Product p = pdao.getProductById(productId);
                 int qty = map.get(productId);
@@ -75,10 +75,10 @@ public class CheckOutServlet extends HttpServlet {
                 }
             }
 
-            // ✅ 5. Clear cart
+            //  5. Clear cart
             session.removeAttribute("cart");
 
-            // ✅ 6. Redirect
+            //  6. Redirect
             response.sendRedirect(request.getContextPath() + "/buyerDashboard?success=1");
 
         } catch (Exception e) {

@@ -1,20 +1,15 @@
 package Model;
-
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public class Order {
-
     private Integer orderID;
     private Integer userID;
-
     private String status;
     private Double totalAmount;
-
-    private LocalDateTime createdAt;   // ✅ important
-    private LocalDateTime updatedAt;   // ✅ optional
-
+    private Timestamp createdAt;   
+    private Timestamp updatedAt;   
+    
     public Order() {}
-
     public Integer getOrderID() {
         return orderID;
     }
@@ -47,19 +42,19 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

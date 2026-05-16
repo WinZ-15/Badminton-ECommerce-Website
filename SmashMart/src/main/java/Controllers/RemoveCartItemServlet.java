@@ -14,7 +14,7 @@ public class RemoveCartItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int productId = Integer.parseInt(request.getParameter("product_ID"));
+        int productId = Integer.parseInt(request.getParameter("productID"));
         HttpSession session = request.getSession();
         ArrayList<Integer> cart = (ArrayList<Integer>) session.getAttribute("cart");
         if (cart != null) {

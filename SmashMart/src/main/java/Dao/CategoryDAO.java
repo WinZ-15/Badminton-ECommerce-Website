@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class CategoryDAO {
-
     private Connection conn;
 
     public CategoryDAO() {
@@ -22,7 +21,7 @@ public class CategoryDAO {
     public ArrayList<Category> getAllCategories() {
         ArrayList<Category> list = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Category";
+            String sql = "SELECT * FROM categories";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -40,7 +39,7 @@ public class CategoryDAO {
 
     public boolean addCategory(Category category) {
         try {
-            String sql = "INSERT INTO category(categoryName) VALUES (?)";
+            String sql = "INSERT INTO categories(categoryName) VALUES (?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, category.getCategoryName());
             return ps.executeUpdate() > 0;
@@ -52,7 +51,7 @@ public class CategoryDAO {
 
     public boolean deleteCategory(int id) {
         try {
-            String sql = "DELETE FROM category WHERE categoryID=?";
+            String sql = "DELETE FROM categories WHERE categoryID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
@@ -65,7 +64,7 @@ public class CategoryDAO {
  
     public Category getCategoryById(int id) {
         try {
-            String sql = "SELECT * FROM category WHERE categoryID=?";
+            String sql = "SELECT * FROM categories WHERE categoryID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

@@ -14,8 +14,11 @@
         <header>
             <nav class="navbar">
                 <div class="logo-container">
-
-                    <a class="logo-text" href="${pageContext.request.contextPath}/home">SmashMart</a>
+                    <a class="logo-text" href="${pageContext.request.contextPath}/home">    
+                        <h1>
+                    Smash<span style="color: #2563eb;">Mart</span>
+                </h1>
+                    </a>
                 </div>
             </nav>
         </header>
@@ -33,36 +36,37 @@
                 </c:if>
 
                 <form action="${pageContext.request.contextPath}/register" method="post">
-
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="fullName" placeholder="Enter your full name" required>
                     </div>
-
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" placeholder="Enter your email" required>
                     </div>
-
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" name="address" placeholder="Enter Address">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input type="text" name="phone" placeholder="Enter Phone Number" required>
+                    </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Create a password" required>
                     </div>
-
                     <div class="form-group">
                         <label>Confirm Password</label>
                         <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
                     </div>
-
                     <button type="submit" class="auth-btn">Register</button>
 
                     <p class="switch">
                         Already have an account?
                         <a href="${pageContext.request.contextPath}/login">Login</a>
                     </p>
-
                 </form>
-
             </section>
         </main>
 

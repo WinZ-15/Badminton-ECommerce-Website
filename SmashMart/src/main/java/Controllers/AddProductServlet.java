@@ -26,8 +26,7 @@ public class AddProductServlet extends HttpServlet {
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
         int categoryID = Integer.parseInt(req.getParameter("categoryID"));
-      
-       int sellerId = 1;
+
         Part filePart = req.getPart("image");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         String uploadPath = getServletContext().getRealPath("/") + "Resources";
@@ -35,7 +34,7 @@ public class AddProductServlet extends HttpServlet {
         // ✅ create folder if not exists
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+            uploadDir.mkdirs();
         }
 
         //  save file
@@ -47,7 +46,6 @@ public class AddProductServlet extends HttpServlet {
         p.setDescription(description);
         p.setPrice(price);
         p.setImage("Resources/" + fileName);
-        p.setUserId(sellerId);
         p.setCategoryID(categoryID); 
 
         ProductDAO dao = new ProductDAO();

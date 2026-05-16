@@ -11,12 +11,12 @@
 <body>
 <header class="navbar">
     <div class="container">
-        <h2>🛒 Your Cart</h2>
+        <h2>Your Cart</h2>
     </div>
 </header>
 <main class="container">
-
-    <!-- ✅ EMPTY -->
+    
+    <!--  EMPTY -->
     <c:if test="${empty cartItems}">
         <p class="empty">Your cart is empty.</p>
         <a href="${pageContext.request.contextPath}/buyerDashboard" class="btn">
@@ -24,11 +24,12 @@
         </a>
     </c:if>
 
-    <!-- ✅ CART ITEMS -->
+    <!--  CART ITEMS -->
     <c:if test="${not empty cartItems}">
         <table class="cart-table">
             <thead>
                 <tr>
+                    <th>image </th>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -41,20 +42,20 @@
                 <c:forEach var="item" items="${cartItems}">
                     <tr>
                         <td>
-                            <img src="${pageContext.request.contextPath}/${item.image}" 
-                                     alt="${item.name}" width="60">
+                            <img src="${pageContext.request.contextPath}/${item.product.image}" 
+                                     alt="${item.product.name}" width="60">
                         </td>
-                        <td>${item.name}</td>
-                        <td>$${item.price}</td>
+                        <td>${item.product.name}</td>
+                        <td>$${item.product.price}</td>
                         <td>${item.quantity}</td>
-                        <td>$${item.price * item.quantity}</td>
+                        <td>$${item.product.price * item.quantity}</td>
 
                         <td>
                             <!--  REMOVE -->
                             <form action="${pageContext.request.contextPath}/removeCartItem"
                                   method="post">
-                                <input type="hidden" name="product_ID"
-                                       value="${item.productID}">
+                                <input type="hidden" name="productID"
+                                       value="${item.product.productID}">
                                 <button type="submit" class="btn danger"  
                                         onclick="return confirm('Remove this item?')">
                                     Remove
@@ -76,7 +77,7 @@
             </form>
         </div>
 
-        <!-- ✅BACK -->
+        <!-- BACK -->
         <a href="${pageContext.request.contextPath}/buyerDashboard"
            class="btn">
             Continue Shopping

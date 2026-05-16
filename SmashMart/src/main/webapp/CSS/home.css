@@ -16,12 +16,13 @@ html, body {
             margin: 0;
     }
 
-    /* ✅ CONTAINER */
+    /*  CONTAINER */
     .container {
         width: 90%;
         max-width: 1200px;
         margin: auto;
     }
+
 
     /* NAVBAR */
     .navbar {
@@ -244,3 +245,87 @@ html, body {
         margin-top: auto;
         padding-bottom: 30px;
     }
+   /* Background overlay */
+.popup-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+/* Popup card */
+.popup {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 14px;
+    width: 320px;
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    animation: popupAnim 0.3s ease;
+}
+
+/* Icon */
+.popup .icon {
+
+    margin-bottom: 10px;
+}
+
+.popup .icon img {
+    width: 40px;   /* adjust size */
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Buttons */
+.popup-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Login button */
+.btn-login {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #1d4ed8;
+}
+
+/* Cancel button */
+.btn-cancel {
+    background: #e5e7eb;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #d1d5db;
+}
+
+/* Animation */
+@keyframes popupAnim {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

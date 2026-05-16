@@ -6,25 +6,21 @@
     <head>
         <meta charset="UTF-8">
         <title>SmashMart Buyer Dashboard</title>
-
         <link rel="stylesheet"
               href="${pageContext.request.contextPath}/CSS/buyerDashboard.css">
     </head>
     <body>
-        <!-- ✅ NAVBAR -->
+        <!--  NAVBAR -->
         <header class="navbar">
             <div class="container navbar-inner">
-                <!-- ✅ LEFT: LOGO -->
-                <a href="${pageContext.request.contextPath}/home" class="logo">
                     <span class="logo-text">Smash<span>Mart</span></span>
-                </a>
                 <div class="user-position">
                     <a  class="user-info" href="${pageContext.request.contextPath}/profile">
                         <strong>${user.name}</strong>
                     </a>
                 </div>
 
-                <!-- ✅ RIGHT SIDE ACTIONS -->
+                <!--  RIGHT SIDE ACTIONS -->
                 <nav class="nav-actions">
                     <a href="${pageContext.request.contextPath}/cart"
                        class="nav-btn">
@@ -49,7 +45,7 @@
             </script>
         </c:if>
 
-        <!-- ✅ MAIN -->
+        <!--  MAIN -->
         <main class="content">
             <c:if test="${param.success == '1'}">
                 <div class="success-msg">
@@ -57,7 +53,7 @@
                 </div>
             </c:if>
 
-            <!-- ✅ HERO -->
+            <!--  HERO -->
             <section class="hero compact">
                 <div class="container">
                     <div class="hero-copy">
@@ -71,26 +67,25 @@
                 </div>
             </section>
 
-            <!-- ✅ PRODUCTS -->
+            <!-- PRODUCTS -->
             <section class="product-list">
                 <div class="container">
-                    <!-- ✅ HEADER -->
+                    <!-- HEADER -->
+                    
                     <div class="section-header">
                         <h2>All Products</h2>
                         <div class="controls">
-
                             <form action="${pageContext.request.contextPath}/buyerDashboard"
                                   method="get"
                                   class="search-form">
 
-
-                                <!-- 🔍 SEARCH -->
+                                <!--  SEARCH -->
                                 <input type="text"
                                        name="search"
                                        placeholder="Search products"
                                        value="${param.search}">
 
-                                <!-- ✅ CATEGORY FILTER -->
+                                <!-- CATEGORY FILTER -->
                                 <select name="category">
                                     <option value="">All Categories</option>
                                     <c:forEach var="cat" items="${categories}">
@@ -100,21 +95,16 @@
                                         </option>
                                     </c:forEach>
                                 </select>
-
                                 <button type="submit" class="btn small">
                                     Filter
                                 </button>
-
                             </form>
-
                         </div>
                     </div>
 
-                    <!-- ✅ GRID -->
+                    <!--  GRID -->
                     <div class="products-grid">
-
                         <c:forEach var="product" items="${products}">
-
                             <div class="product-card">
 
                                 <!-- IMAGE -->
@@ -132,21 +122,17 @@
 
                                 <!-- BODY -->
                                 <div class="card-body">
-                                    <div class="brand">${product.brand}</div>
-
+                                    <div clzss="brand">${product.brand}</div>
                                     <h3 class="card-name">${product.name}</h3>
-
                                     <p class="card-desc">
                                         ${product.description}
                                     </p>
 
                                     <!-- FOOTER -->
                                     <div class="card-footer">
-
                                         <div class="price">
                                             $${product.price}
                                         </div>
-
                                         <div class="actions">
 
                                             <!-- ADD TO CART -->
@@ -155,7 +141,7 @@
                                                   class="inline-form">
 
                                                 <input type="hidden"
-                                                       name="product_ID"
+                                                       name="productID"
                                                        value="${product.productID}">
 
                                                 <input type="number"
@@ -171,7 +157,7 @@
                                             </form>
 
                                             <!-- DETAILS -->
-                                            <a href="${pageContext.request.contextPath}/productDetail?product_ID=${product.productID}"
+                                            <a href="${pageContext.request.contextPath}/productDetail?productID=${product.productID}"
                                                class="btn small primary" style="text-decoration: none;">
                                                 Details
                                             </a>
@@ -183,18 +169,16 @@
 
                         </c:forEach>
                     </div>
-
-                    <!-- ✅ EMPTY STATE -->
+                    
+                    <!--  EMPTY STATE -->
                     <c:if test="${empty products}">
                         <p class="muted">No products found.</p>
                     </c:if>
-
                 </div>
             </section>
-
         </main>
 
-        <!-- ✅ FOOTER -->
+        <!-- FOOTER -->
         <footer class="site-footer">
             <div class="container footer-inner">
                 <div class="footer-logo">

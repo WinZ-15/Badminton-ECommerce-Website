@@ -1,5 +1,6 @@
 package Controllers;
 
+import Dao.CategoryDAO;
 import Dao.ProductDAO;
 import Model.Product;
 import jakarta.servlet.ServletException;
@@ -16,6 +17,9 @@ public class EditProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
+            CategoryDAO cdao = new CategoryDAO();
+            req.setAttribute("categories", cdao.getAllCategories());
+
             String idParam = req.getParameter("productID");
             if (idParam == null || idParam.isEmpty()) {
                 resp.sendRedirect("adminDashboard");

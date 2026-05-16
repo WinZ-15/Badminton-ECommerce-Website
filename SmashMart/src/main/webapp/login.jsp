@@ -12,8 +12,11 @@
         <header>
             <nav class="navbar">
                 <div class="logo-container">
-
-                    <a class="logo-text" href="${pageContext.request.contextPath}/home">SmashMart</a>
+                    <a class="logo-text" href="${pageContext.request.contextPath}/home">  
+                        <h1>
+                            Smash<span style="color: #2563eb;">Mart</span>
+                        </h1>
+                    </a>
                 </div>
             </nav>
         </header>
@@ -22,7 +25,7 @@
             <section class="auth-card">
                 <h2>Welcome Back!</h2>
                 <p class="subtitle">Login to your account</p>
-                
+
                 <form action="${pageContext.request.contextPath}/login" method="post">
                     <div class="form-group">
                         <label>Email</label>
@@ -35,7 +38,7 @@
                     </div>
                     <c:if test="${not empty error}">
                         <div class="error-message">
-                            ${error}
+                            <h2 style="color:red">${error}</h2>
                         </div>
                     </c:if>
                     <button type="submit" class="auth-btn">Login</button>

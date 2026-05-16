@@ -24,7 +24,7 @@ public class ProductDAO {
 
     public ArrayList<Product> getAllProducts() throws SQLException {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM Product";
+        String sql = "SELECT * FROM products";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -39,9 +39,8 @@ public class ProductDAO {
                 p.setPrice(rs.getDouble("price"));
                 p.setImage(rs.getString("image"));
                 p.setCategoryID(rs.getInt("categoryID"));
-                p.setUserId(rs.getInt("userID")); //  admin/seller id
                 products.add(p);
-            }     
+            }
         } catch (SQLException ex) {
             System.out.println("Database Error: " + ex.getMessage());
         }
@@ -50,7 +49,7 @@ public class ProductDAO {
 
     public void insertProduct(Product product) throws SQLException {
         try {
-            String sql = "INSERT INTO product (name, description, brand, image, price, categoryID, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO products (name, description, brand, image, price, categoryID) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, product.getName());
@@ -59,7 +58,6 @@ public class ProductDAO {
             ps.setString(4, product.getImage());
             ps.setDouble(5, product.getPrice());
             ps.setInt(6, product.getCategoryID());
-            ps.setInt(7, product.getUserId());
 
             int rows = ps.executeUpdate();
             System.out.println("Inserted rows: " + rows);
@@ -71,13 +69,14 @@ public class ProductDAO {
 
     public void updateProduct(Product p) throws SQLException {
         try {
-            String sql = "UPDATE product SET name=?, brand=?, description=?, price=? WHERE productID=?";
+            String sql = "UPDATE products SET name=?, brand=?, description=?, price=?, categoryID=? WHERE productID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, p.getName());
             ps.setString(2, p.getBrand());
             ps.setString(3, p.getDescription());
             ps.setDouble(4, p.getPrice());
-            ps.setInt(5, p.getProductID());
+            ps.setInt(5, p.getCategoryID());
+            ps.setInt(6, p.getProductID());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Database Error: " + ex.getMessage());
@@ -86,10 +85,18 @@ public class ProductDAO {
 
     public void deleteProduct(int id) throws SQLException {
         try {
-            String sql = "DELETE FROM product WHERE productID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
+            //  Step 1: delete related orderItems first
+            String sql1 = "DELETE FROM orderItems WHERE productID=?";
+            PreparedStatement ps1 = conn.prepareStatement(sql1);
+            ps1.setInt(1, id);
+            ps1.executeUpdate();
+
+            //  Step 2: delete product
+            String sql2 = "DELETE FROM products WHERE productID=?";
+            PreparedStatement ps2 = conn.prepareStatement(sql2);
+            ps2.setInt(1, id);
+            ps2.executeUpdate();
+
         } catch (SQLException ex) {
             System.out.println("Database Error: " + ex.getMessage());
         }
@@ -98,7 +105,7 @@ public class ProductDAO {
     public Product getProductById(int id) {
         Product product = null;
         try {
-            String sql = "SELECT * FROM product WHERE productID=?";
+            String sql = "SELECT * FROM products WHERE productID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -110,7 +117,6 @@ public class ProductDAO {
                         rs.getString("description"),
                         rs.getDouble("price"),
                         rs.getString("image"),
-                        rs.getInt("userID"),
                         rs.getInt("categoryID")
                 );
             }
@@ -123,7 +129,7 @@ public class ProductDAO {
     public ArrayList<Product> getProductsByCategory(int categoryID) throws SQLException {
         ArrayList<Product> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM product WHERE categoryID = ?";
+        String sql = "SELECT * FROM products WHERE categoryID = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, categoryID);
         ResultSet rs = ps.executeQuery();
@@ -137,7 +143,6 @@ public class ProductDAO {
             product.setPrice(rs.getDouble("price"));
             product.setImage(rs.getString("image"));
             product.setCategoryID(rs.getInt("categoryID"));
-            product.setUserId(rs.getInt("userID"));
             list.add(product);
         }
         return list;
@@ -145,7 +150,7 @@ public class ProductDAO {
 
     public ArrayList<Product> searchProducts(String keyword) throws SQLException {
         ArrayList<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM product WHERE name LIKE ? OR brand LIKE ?";
+        String sql = "SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, "%" + keyword + "%");
@@ -161,7 +166,6 @@ public class ProductDAO {
             product.setPrice(rs.getDouble("price"));
             product.setImage(rs.getString("image"));
             product.setCategoryID(rs.getInt("categoryID"));
-            product.setUserId(rs.getInt("userID"));
             list.add(product);
         }
         return list;

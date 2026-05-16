@@ -1,5 +1,4 @@
 package Model;
-
 import java.sql.Timestamp;
 
 public class User {
@@ -11,12 +10,10 @@ public class User {
     private String role;
     private String address;
     private String phone;
-
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     public User() {}
-
     public Integer getUserID() {
         return userID;
     }
@@ -25,11 +22,11 @@ public class User {
         this.userID = userID;
     }
 
-    public String getName() {   // ✅ fixed
+    public String getName() {  
         return name;
     }
 
-    public void setName(String name) {   // ✅ fixed
+    public void setName(String name) {   
         this.name = name;
     }
 

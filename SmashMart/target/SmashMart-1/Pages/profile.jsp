@@ -12,7 +12,7 @@
    <div class="container">
        <h2>Profile</h2>
     <div class="navbar-inner">
-        Welcome, ${user.userName}
+        Welcome, ${user.name}
         <a class="btnback" href="${pageContext.request.contextPath}/buyerDashboard">
             Back
         </a>
@@ -26,6 +26,8 @@
         <p><strong>Name:</strong> ${user.name}</p>
         <p><strong>Email:</strong> ${user.email}</p>
         <p><strong>Role:</strong> ${user.role}</p>
+        <p><strong>Address:</strong> ${user.address}</p>
+        <p><strong>Contact:</strong> ${user.phone}</p>
     </div>
 </main>
 </body>

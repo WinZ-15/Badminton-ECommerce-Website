@@ -15,11 +15,12 @@ public class UpdateProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("product_ID"));
+        int id = Integer.parseInt(req.getParameter("productID"));
         String name = req.getParameter("name");
         String brand = req.getParameter("brand");
         String description = req.getParameter("description");
         double price = Double.parseDouble(req.getParameter("price"));
+        int categoryID = Integer.parseInt(req.getParameter("categoryID"));
         
         if (name == null || name.isEmpty()) {
             resp.sendRedirect("editProduct?error=1");
@@ -32,6 +33,7 @@ public class UpdateProductServlet extends HttpServlet {
         product.setBrand(brand);
         product.setDescription(description);
         product.setPrice(price);
+        product.setCategoryID(categoryID);
 
         ProductDAO dao = new ProductDAO();
         try {

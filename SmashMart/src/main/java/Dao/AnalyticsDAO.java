@@ -53,7 +53,7 @@ public class AnalyticsDAO {
     public int getTotalUsers() {
         int count = 0;
         try {
-            String sql = "SELECT COUNT(*) FROM user";
+            String sql = "SELECT COUNT(*) FROM users";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -69,7 +69,7 @@ public class AnalyticsDAO {
     public int getTotalProducts() {
         int count = 0;
         try {
-            String sql = "SELECT COUNT(*) FROM product";
+            String sql = "SELECT COUNT(*) FROM products";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

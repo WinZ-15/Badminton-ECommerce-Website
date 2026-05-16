@@ -1,33 +1,26 @@
 package Model;
-
 import java.sql.Timestamp;
 
 public class Product {
-
     private Integer productID;
     private String name;
     private String description;
     private Double price;
     private Integer categoryID;
     private String brand;
-    private int userId;
     private String image;
-    private int quantity;
-
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     public Product() {}
-
     public Product(Integer productID, String name, String brand, String description,
-                   Double price, String image, int userId , int categoryID) {
+                   Double price, String image, int categoryID) {
         this.productID = productID;
         this.name = name;
         this.brand = brand;
         this.description = description;
         this.price = price;
         this.image = image;
-        this.userId = userId;
         this.categoryID=categoryID;
     }
 
@@ -79,28 +72,12 @@ public class Product {
         this.brand = brand;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Timestamp getCreatedAt() {

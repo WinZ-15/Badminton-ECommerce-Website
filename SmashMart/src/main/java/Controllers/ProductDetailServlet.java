@@ -15,7 +15,7 @@ public class ProductDetailServlet extends HttpServlet {
             throws ServletException, IOException {
             try {
                 //checking if it null and preparing early exit
-                String idProductCheck = request.getParameter("product_ID");
+                String idProductCheck = request.getParameter("productID");
                 if (idProductCheck == null) {
                 response.sendRedirect("buyerDashboard");
                 return;

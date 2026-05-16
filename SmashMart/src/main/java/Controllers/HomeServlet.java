@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
 public class HomeServlet extends HttpServlet {
-
   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

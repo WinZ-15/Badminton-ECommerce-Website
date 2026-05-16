@@ -1,7 +1,6 @@
 package Model;
 
 public class Category {
-
     private Integer categoryID;
     private String categoryName;
 

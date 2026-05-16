@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2026 at 06:48 PM
+-- Generation Time: May 16, 2026 at 02:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,163 +24,169 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `categories`
 --
 
-CREATE TABLE `category` (
-  `category_ID` int(11) NOT NULL,
-  `category_name` varchar(100) NOT NULL
+CREATE TABLE `categories` (
+  `categoryID` int(11) NOT NULL,
+  `categoryName` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `categories`
 --
 
-INSERT INTO `category` (`category_ID`, `category_name`) VALUES
-(1, 'High-End Racket'),
-(2, 'Mid-End Racket'),
-(3, 'Low-End Racket'),
-(4, 'High-End Shuttlecock'),
-(5, 'Mid-End Shuttlecock'),
-(6, 'Low-End Shuttlecock');
+INSERT INTO `categories` (`categoryID`, `categoryName`) VALUES
+(1, 'High End Racket'),
+(2, 'Mid End Racket'),
+(3, 'Low End Racket'),
+(4, 'High End Shuttlecock'),
+(5, 'Mid End Shuttlecock'),
+(6, 'Low End Shuttlecock');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `orderitems`
 --
 
-CREATE TABLE `order` (
-  `order_ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `order_date` datetime NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL,
-  `status` enum('Pending','Shipped','Delivered','Cancelled') NOT NULL
+CREATE TABLE `orderitems` (
+  `orderItemID` int(11) NOT NULL,
+  `orderID` int(11) DEFAULT NULL,
+  `productID` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `subtotal` double DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `orderitems`
 --
 
-INSERT INTO `order` (`order_ID`, `user_ID`, `order_date`, `total_amount`, `status`) VALUES
-(1, 2, '2026-05-01 10:30:00', 140.00, ''),
-(2, 3, '2026-05-02 15:45:00', 18.00, 'Pending');
+INSERT INTO `orderitems` (`orderItemID`, `orderID`, `productID`, `quantity`, `subtotal`, `createdAt`) VALUES
+(1, 1, 1, 1, 500, '2026-05-16 05:59:16'),
+(4, 3, 1, 2, 500, '2026-05-16 08:31:12'),
+(5, 4, 1, 1, 1000, '2026-05-16 11:37:43'),
+(6, 4, 2, 4, 480, '2026-05-16 11:37:43');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_item`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `order_item` (
-  `order_item_ID` int(11) NOT NULL,
-  `product_ID` int(11) NOT NULL,
-  `order_ID` int(11) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `quantity` int(11) NOT NULL
+CREATE TABLE `orders` (
+  `orderID` int(11) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `totalAmount` double DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order_item`
+-- Dumping data for table `orders`
 --
 
-INSERT INTO `order_item` (`order_item_ID`, `product_ID`, `order_ID`, `price`, `quantity`) VALUES
-(1, 1, 1, 120.00, 1),
-(2, 3, 1, 20.00, 1),
-(3, 4, 2, 18.00, 2);
+INSERT INTO `orders` (`orderID`, `userID`, `totalAmount`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 2, 520, 'COMPLETED', '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(2, 3, 150, 'PENDING', '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(3, 4, 500, 'PENDING', '2026-05-16 08:31:12', '2026-05-16 08:31:12'),
+(4, 5, 1480, 'PENDING', '2026-05-16 11:37:43', '2026-05-16 11:37:43');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `product` (
-  `product_ID` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+CREATE TABLE `products` (
+  `productID` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `brand` varchar(50) DEFAULT NULL,
-  `stock` int(11) DEFAULT 0,
+  `price` double DEFAULT NULL,
+  `brand` varchar(100) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `category_ID` int(11) DEFAULT NULL,
-  `user_ID` int(11) NOT NULL
+  `categoryID` int(11) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `product` (`product_ID`, `name`, `description`, `brand`, `stock`, `image`, `price`, `category_ID`, `user_ID`) VALUES
-(1, 'Yonex Nanoray 10', 'Lightweight racket for beginners', 'Yonex', 50, NULL, 120.00, 3, 1),
-(2, 'Li-Ning Turbo X', 'Professional grade racket', 'Li-Ning', 30, NULL, 150.00, 1, 1),
-(3, 'Yonex Mavis 350', 'Durable nylon shuttlecock', 'Yonex', 100, NULL, 20.00, 5, 1),
-(4, 'Victor Champion No.1', 'Feather shuttlecock for tournaments', 'Victor', 80, NULL, 18.00, 4, 1);
+INSERT INTO `products` (`productID`, `name`, `description`, `price`, `brand`, `image`, `categoryID`, `createdAt`, `updatedAt`) VALUES
+(1, 'Yonex Astrox 100ZZ', 'Professional high-end racket', 1000, 'Yonex', 'Resources/racket1.jpg', 1, '2026-05-16 05:57:44', '2026-05-16 11:33:20'),
+(2, 'Li-Ning Turbo X50', 'Mid range racket', 120, 'Li-Ning', 'Resources/racket2.jpg', 2, '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(6, 'Practice Shuttle', 'Low cost shuttlecock', 20, 'Generic', 'Resources/shuttle3.jpg', 6, '2026-05-16 05:57:44', '2026-05-16 09:32:53');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
-  `user_ID` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+CREATE TABLE `users` (
+  `userID` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `role` enum('Admin','Buyer') NOT NULL
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`user_ID`, `name`, `email`, `password`, `address`, `phone`, `role`) VALUES
-(1, 'Admin Seller', 'admin@smashmart.com', 'admin123', 'Pokhara, Nepal', '9800000000', 'Admin'),
-(2, 'Buyer One', 'buyer1@smashmart.com', 'buyer123', 'Kathmandu, Nepal', '9811111111', 'Buyer'),
-(3, 'Buyer Two', 'buyer2@smashmart.com', 'buyer234', 'Pokhara, Nepal', '9822222222', 'Buyer'),
-(19, 'Prasun Man Buddhacharya', 'Prasun@gmail.com', 'WinnerZ', NULL, NULL, 'Buyer');
+INSERT INTO `users` (`userID`, `name`, `email`, `password`, `role`, `address`, `phone`, `createdAt`, `updatedAt`) VALUES
+(1, 'Admin User', 'admin@gmail.com', 'admin123', 'admin', 'Kathmandu', '9800000000', '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(2, 'John Doe', 'john@gmail.com', 'password123', 'buyer', 'Pokhara', '9811111111', '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(3, 'Jane Smith', 'jane@gmail.com', 'password123', 'buyer', 'Lalitpur', '9822222222', '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
+(4, 'Admin', 'admin@sm.com', '$2a$10$i7dwTSnBf/afglFR23fJMO1fKGA9lx57zhufmZAcx.hCC73zu8dsW', 'Admin', 'Pkr', '9856020743', '2026-05-16 08:05:51', '2026-05-16 10:26:52'),
+(5, 'Tester', 'test@sm.com', '$2a$10$ui4N7xDOLnyNjxZsWJhi1.9ESB4m1Xx9VYZGkhe6WGkAtTclJhkkO', 'Buyer', 'Pokahra', '9856020743', '2026-05-16 11:36:03', '2026-05-16 11:36:03');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `category`
+-- Indexes for table `categories`
 --
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_ID`);
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`categoryID`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `orderitems`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_ID`),
-  ADD KEY `user_ID` (`user_ID`);
+ALTER TABLE `orderitems`
+  ADD PRIMARY KEY (`orderItemID`),
+  ADD KEY `orderID` (`orderID`),
+  ADD KEY `productID` (`productID`);
 
 --
--- Indexes for table `order_item`
+-- Indexes for table `orders`
 --
-ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`order_item_ID`),
-  ADD KEY `product_ID` (`product_ID`),
-  ADD KEY `order_ID` (`order_ID`);
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderID`),
+  ADD KEY `userID` (`userID`);
 
 --
--- Indexes for table `product`
+-- Indexes for table `products`
 --
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_ID`),
-  ADD KEY `category_ID` (`category_ID`),
-  ADD KEY `user_ID` (`user_ID`);
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`productID`),
+  ADD KEY `categoryID` (`categoryID`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_ID`),
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userID`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -188,58 +194,57 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT for table `categories`
 --
-ALTER TABLE `category`
-  MODIFY `category_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+ALTER TABLE `categories`
+  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `orderitems`
 --
-ALTER TABLE `order`
-  MODIFY `order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `orderitems`
+  MODIFY `orderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `order_item`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `order_item`
-  MODIFY `order_item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `orders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `product`
-  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `products`
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `users`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `order`
+-- Constraints for table `orderitems`
 --
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`);
+ALTER TABLE `orderitems`
+  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`),
+  ADD CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `products` (`productID`);
 
 --
--- Constraints for table `order_item`
+-- Constraints for table `orders`
 --
-ALTER TABLE `order_item`
-  ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`product_ID`) REFERENCES `product` (`product_ID`),
-  ADD CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`order_ID`) REFERENCES `order` (`order_ID`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`);
 
 --
--- Constraints for table `product`
+-- Constraints for table `products`
 --
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_ID`) REFERENCES `category` (`category_ID`),
-  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`);
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `categories` (`categoryID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

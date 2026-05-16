@@ -11,8 +11,10 @@
         <!-- ✅ NAVBAR -->
         <header class="navbar">
             <div class="container nav-container">
-                <div class="logo">SmashMart</div>
-                <div class =" nav-mid">  
+                <h2>
+                    Smash<span style="color: #2563eb;">Mart</span>
+                </h2>
+                <div class ="nav-mid">  
                     <a href="Pages/about.html">About</a>
                     <a href="Pages/contact.html">Contact</a>
                 </div>
@@ -23,7 +25,7 @@
             </div>
         </header>
 
-        <!-- ✅ HERO -->
+        <!--  HERO -->
         <section class="hero">
             <div class="container hero-content">
 
@@ -41,7 +43,7 @@
             </div>
         </section>
 
-        <!-- ✅ TRUST -->
+        <!--  TRUST -->
         <section class="trust">
             <div class="container trust-grid">
                 <div> Free Shipping</div>
@@ -51,7 +53,7 @@
             </div>
         </section>
 
-        <!-- ✅ PRODUCTS -->
+        <!--  PRODUCTS -->
         <section class="products container">
             <div class="section-header">
                 <h2>Featured Products</h2>
@@ -60,30 +62,30 @@
 
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="${pageContext.request.contextPath}/Resources/racket1.jpg">
+                    <img src="${pageContext.request.contextPath}/Resources/home1.jpeg">
                     <h3>Carbon Pro Racket</h3>
                     <p class="price">$89.99</p>
-                    <button>Add to Cart</button>
+                    <button onclick="showPopup()">Add to Cart</button>
                 </div>
 
                 <div class="product-card">
-                    <img src="${pageContext.request.contextPath}/Resources/racket2.jpg">
+                    <img src="${pageContext.request.contextPath}/Resources/home2.jpeg">
                     <h3>Elite Tournament Racket</h3>
                     <p class="price">$129.99</p>
-                    <button>Add to Cart</button>
+                    <button onclick="showPopup()">Add to Cart</button>
                 </div>
 
                 <div class="product-card">
-                    <img src="${pageContext.request.contextPath}/Resources/shuttle.jpg">
+                    <img src="${pageContext.request.contextPath}/Resources/home3.jpeg">
                     <h3>Feather Shuttlecock</h3>
                     <p class="price">$24.99</p>
-                    <button>Add to Cart</button>
+                    <button onclick="showPopup()">Add to Cart</button>
                 </div>
 
             </div>
         </section>
 
-        <!-- ✅ CATEGORIES -->
+        <!--  CATEGORIES -->
         <section class="categories">
             <div class="container">
                 <h2>Shop by Category</h2>
@@ -91,12 +93,11 @@
                 <div class="category-grid">
                     <div class="category-card">Rackets</div>
                     <div class="category-card">Shuttlecocks</div>
-                    <div class="category-card">Accessories</div>
                 </div>
             </div>
         </section>
 
-        <!-- ✅ TESTIMONIALS -->
+        <!--  Review -->
         <section class="testimonials container">
             <h2>What Players Say</h2>
 
@@ -118,7 +119,7 @@
             </div>
         </section>
 
-        <!-- ✅ CTA -->
+        <!-- BOTTOM -->
         <section class="cta">
             <div class="container">
                 <h2>Upgrade Your Game Today</h2>
@@ -126,7 +127,7 @@
             </div>
         </section>
 
-        <!-- ✅ FOOTER -->
+        <!-- FOOTER -->
         <footer class="footer">
             <div class="container footer-grid">
                 <div>
@@ -141,5 +142,43 @@
             </div>
         </footer>
 
+        <div id="popup" class="popup-bg">
+            <div class="popup">
+                <span class="icon"><img src="${pageContext.request.contextPath}/Resources/warning.png"></span>
+                <h3>Login Required</h3>
+                <p>Please login first to add items to cart</p>
+
+                <div class="popup-buttons">
+                    <button class="btn-login" id="loginBtn">Login</button>
+                    <button class="btn-cancel" id="closeBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const popup = document.getElementById("popup");
+            const closeBtn = document.getElementById("closeBtn");
+            const loginBtn = document.getElementById("loginBtn");
+
+            function showPopup() {
+                popup.style.display = "flex";
+            }
+
+            // close popup
+            closeBtn.onclick = () => {
+                popup.style.display = "none";
+            };
+
+            // go to login
+            loginBtn.onclick = () => {
+                window.location.href = "${pageContext.request.contextPath}/login";
+            };
+
+            // click outside to close
+            window.onclick = (e) => {
+                if (e.target === popup) {
+                    popup.style.display = "none";
+                }
+            };
+        </script>
     </body>
 </html>

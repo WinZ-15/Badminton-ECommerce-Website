@@ -19,7 +19,7 @@ public class OrderItemDAO {
  //add item to order
 public boolean addOrderItem(int orderID, int productID, int qty, double subtotal) {
     try {
-        String sql = "INSERT INTO order_items(orderID, productID, quantity, subtotal) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO orderItems(orderID, productID, quantity, subtotal) VALUES (?, ?, ?, ?)";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, orderID);
         ps.setInt(2, productID);

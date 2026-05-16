@@ -33,7 +33,7 @@
                     <form action="
                           ${pageContext.request.contextPath}/addProductCart"
                           method="post">
-                        <input type="hidden" name="product_ID" value="${product.productID}">
+                        <input type="hidden" name="productID" value="${product.productID}">
                         <input type="hidden" name="qty" value="1">
                         <button class="btn primary">Add to Cart</button>
                     </form>

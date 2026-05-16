@@ -26,7 +26,10 @@ public class RegisterServlet extends HttpServlet {
         String name = request.getParameter("fullName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
+        String confirmPassword = request.getParameter("confirmPassword");  
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+
 
         // 1. Validate empty fields
         if (name == null || name.isEmpty()
@@ -76,6 +79,8 @@ public class RegisterServlet extends HttpServlet {
         user.setEmail(email);
         user.setPassword(hashedPassword);
         user.setRole("Buyer");
+        user.setAddress(address);
+        user.setPhone(phone);
 
         // 6. Save to DB
         boolean success = dao.registerUser(user);

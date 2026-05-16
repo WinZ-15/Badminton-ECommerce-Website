@@ -6,17 +6,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Edit Product - SmashMart</title>
-
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/adminDashboard.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/edit.css">
     </head>
-
     <body>
 
         <!-- Navbar (same as dashboard) -->
         <header class="navbar">
             <div class="container navbar-inner">
-                <a href="${pageContext.request.contextPath}/adminDashboard" class="logo">
-                    <img src="${pageContext.request.contextPath}/Resources/logo.png" class="logo-img" alt="logo">
                     <span class="logo-text">Smash<span>Mart</span></span>
                 </a>
 
@@ -48,7 +44,7 @@
 
                         <form action="${pageContext.request.contextPath}/updateProduct"  method="post" class="product-form">
                             <!-- hidden ID -->
-                            <input type="hidden" name="product_ID" value="${product.productID}">
+                            <input type="hidden" name="productID" value="${product.productID}">
                             <label>Product Name</label>
                             <input type="text" name="name" value="${product.name}" required>
 
@@ -57,6 +53,16 @@
 
                             <label>Description</label>
                             <textarea name="description">${product.description}</textarea>
+                            
+                            <label>Category</label>
+                            <select name="categoryID" required>
+                                <c:forEach var="cat" items="${categories}">
+                                    <option value="${cat.categoryID}"
+                                        <c:if test="${cat.categoryID == product.categoryID}">selected</c:if>>
+                                        ${cat.categoryName}
+                                    </option>
+                                </c:forEach>
+                            </select>
 
                             <label>Price</label>
                             <input type="number" name="price" value="${product.price}" step="0.01" required>
