@@ -13,7 +13,6 @@ import Model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -25,16 +24,6 @@ public class AdminDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            //  GET USER FROM SESSION
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-
-            //  ROLE CHECK 
-           if (user == null || !user.getRole().equalsIgnoreCase("admin")) {
-                response.sendRedirect("home");
-                return; 
-            }
-
         try {
             //  LOAD ALL DATA
             CategoryDAO cdao = new CategoryDAO();
@@ -45,8 +34,8 @@ public class AdminDashboardServlet extends HttpServlet {
 
             //  GET DATA FROM DB
             ArrayList<Category> categories = cdao.getAllCategories();
-            ArrayList<Product> products = pdao.getAllProducts(); 
-            ArrayList<User> users = udao.getAllUsers();      
+            ArrayList<Product> products = pdao.getAllProducts();
+            ArrayList<User> users = udao.getAllUsers();
             ArrayList<Order> orders = odao.getAllOrders();
 
             //  ANALYTICS
@@ -55,12 +44,11 @@ public class AdminDashboardServlet extends HttpServlet {
             int totalOrders = adao.getTotalOrders();
             double totalRevenue = adao.getTotalSales();
 
-
             //  SET ATTRIBUTES
             request.setAttribute("categories", categories);
             request.setAttribute("products", products);
-            request.setAttribute("users", users); 
-            request.setAttribute("orders",orders);
+            request.setAttribute("users", users);
+            request.setAttribute("orders", orders);
 
             request.setAttribute("totalUsers", totalUsers);
             request.setAttribute("totalProducts", totalProducts);

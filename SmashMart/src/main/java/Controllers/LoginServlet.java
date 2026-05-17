@@ -41,11 +41,9 @@ public class LoginServlet extends HttpServlet {
             boolean matched = PasswordUtil.checkPassword(password, hashedPassword);
 
             if (matched) {
-                // we store user object in session with user attribute
-                SessionUtil.setAttribute(request, "user", user);
-                // in seconds sec*min*hr=total sec
-                CookieUtil.addCookie(response, "name", user.getName(), 60 * 60 * 24);// 1 day
-                CookieUtil.addCookie(response, "id", String.valueOf(user.getUserID()), 60 * 60 * 24);// 1 day
+               SessionUtil.setAttribute(request, "user", user);
+                //  Store login info in cookie 
+                 CookieUtil.addCookie(response, "userEmail", user.getEmail(), 60 * 60 * 24); // 1 day
              
                 // ROLE CHECK
               if ("ADMIN".equalsIgnoreCase(user.getRole())) {

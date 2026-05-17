@@ -8,10 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ProductDAO {
+/**
+ * Data Access Object (DAO) class for managing Product data.
+ * 
+ * This class provides methods to perform CRUD (Create, Read,
+ * Update, Delete) operations on the products table.
+ * It acts as a bridge between the application and the database.
+ */
 
+
+public class ProductDAO {
+    /** Database connection instance */
     private Connection conn;
     private boolean isConnectionError = false;
+
+/**
+ * Initializes database connection for product operations.
+ */
 
     public ProductDAO() {
         try {
@@ -22,14 +35,19 @@ public class ProductDAO {
         }
     }
 
+/**
+ * Retrieves all products from the database.
+ * 
+ * @return list of all products
+ * @throws SQLException if database error occurs
+ */
+
     public ArrayList<Product> getAllProducts() throws SQLException {
         ArrayList<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM products";
-
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
                 Product p = new Product();
                 p.setProductID(rs.getInt("productID"));
@@ -47,25 +65,36 @@ public class ProductDAO {
         return products;
     }
 
+/**
+ * Inserts a new product into the database.
+ * 
+ * @param product Product object to be inserted
+ * @throws SQLException if database error occurs
+ */
+
     public void insertProduct(Product product) throws SQLException {
         try {
             String sql = "INSERT INTO products (name, description, brand, image, price, categoryID) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-
             ps.setString(1, product.getName());
             ps.setString(2, product.getDescription());
             ps.setString(3, product.getBrand());
             ps.setString(4, product.getImage());
             ps.setDouble(5, product.getPrice());
             ps.setInt(6, product.getCategoryID());
-
             int rows = ps.executeUpdate();
             System.out.println("Inserted rows: " + rows);
-
         } catch (SQLException ex) {
             System.out.println("Database Error: " + ex.getMessage());
         }
     }
+
+/**
+ * Updates an existing product in the database.
+ * 
+ * @param p Product object containing updated details
+ * @throws SQLException if database error occurs
+ */
 
     public void updateProduct(Product p) throws SQLException {
         try {
@@ -83,6 +112,16 @@ public class ProductDAO {
         }
     }
 
+/**
+ * Deletes a product from the database.
+ * 
+ * This method first removes related records from the orderItems
+ * table to avoid foreign key constraint violations, and then
+ * deletes the product from the products table.
+ * 
+ * @param id product ID to delete
+ * @throws SQLException if a database error occurs
+ */
     public void deleteProduct(int id) throws SQLException {
         try {
             //  Step 1: delete related orderItems first
@@ -90,18 +129,22 @@ public class ProductDAO {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
             ps1.setInt(1, id);
             ps1.executeUpdate();
-
             //  Step 2: delete product
             String sql2 = "DELETE FROM products WHERE productID=?";
             PreparedStatement ps2 = conn.prepareStatement(sql2);
             ps2.setInt(1, id);
             ps2.executeUpdate();
-
         } catch (SQLException ex) {
             System.out.println("Database Error: " + ex.getMessage());
         }
     }
 
+/**
+ * Retrieves a product by its ID.
+ * 
+ * @param id product ID to search for
+ * @return Product object if found, null otherwise
+ */
     public Product getProductById(int id) {
         Product product = null;
         try {
@@ -126,14 +169,19 @@ public class ProductDAO {
         return product;
     }
 
+/**
+ * Retrieves products belonging to a specific category.
+ * 
+ * @param categoryID category ID to filter products
+ * @return list of products in the given category
+ * @throws SQLException if database error occurs
+ */
     public ArrayList<Product> getProductsByCategory(int categoryID) throws SQLException {
         ArrayList<Product> list = new ArrayList<>();
-
         String sql = "SELECT * FROM products WHERE categoryID = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, categoryID);
         ResultSet rs = ps.executeQuery();
-
         while (rs.next()) {
             Product product = new Product();
             product.setProductID(rs.getInt("productID"));
@@ -148,15 +196,23 @@ public class ProductDAO {
         return list;
     }
 
+/**
+ * Searches products by keyword.
+ * 
+ * This method searches products based on name or brand matching
+ * the given keyword.
+ * 
+ * @param keyword search keyword
+ * @return list of matching products
+ * @throws SQLException if database error occurs
+ */
     public ArrayList<Product> searchProducts(String keyword) throws SQLException {
         ArrayList<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?";
-
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, "%" + keyword + "%");
         ps.setString(2, "%" + keyword + "%");
         ResultSet rs = ps.executeQuery();
-
         while (rs.next()) {
             Product product = new Product();
             product.setProductID(rs.getInt("productID"));

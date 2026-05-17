@@ -11,7 +11,6 @@ Model\Order.class
 Utilities\SessionUtil.class
 Dao\CategoryDAO.class
 Controllers\HomeServlet.class
-Controllers\AuthFilter.class
 Controllers\LoginServlet.class
 Controllers\ProductDetailServlet.class
 Utilities\PasswordUtil.class

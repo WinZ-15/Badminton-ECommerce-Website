@@ -2,20 +2,47 @@ package Utilities;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+/**
+ * Utility class for handling password security operations.
+ * 
+ * This class provides methods to hash passwords and verify
+ * user-entered passwords using BCrypt. It ensures secure
+ * password storage and authentication.
+ */
 public class PasswordUtil {
-    //best value is between 10 and 12 for time complexity and robustness
-    // 2^COST times iteration for hashing, COST 10 and 11 means double iteration
-    private final static int COST = 10;  
-    
-    public static String getHashPassword(String inputPassword){
-        // Generate a salt with a default work factor (10 is the default, 
-        //12 is a reasonable modern default)
+
+    /**
+     * Cost factor for BCrypt hashing.
+     * Higher values increase security but also computation time.
+     */
+    private final static int COST = 10;
+
+    /**
+     * Generates a hashed version of the given password.
+     * 
+     * This method uses BCrypt to create a salted hash of the password,
+     * making it secure against brute-force and rainbow table attacks.
+     * 
+     * @param inputPassword plain text password entered by user
+     * @return hashed password string
+     */
+    public static String getHashPassword(String inputPassword) {
+        // Generate salt and hash password
         String salt = BCrypt.gensalt(COST);
-        // Hash the password with the generated salt
         return BCrypt.hashpw(inputPassword, salt);
     }
-    
-    public static boolean checkPassword(String passwordTyped, String hashedPassword){
+
+    /**
+     * Verifies a password against its hashed version.
+     * 
+     * This method compares the plain text password entered by
+     * the user with the hashed password stored in the database.
+     * 
+     * @param passwordTyped password entered by the user
+     * @param hashedPassword stored hashed password
+     * @return true if passwords match, false otherwise
+     */
+    public static boolean checkPassword(String passwordTyped, String hashedPassword) {
         return BCrypt.checkpw(passwordTyped, hashedPassword);
     }
 }
