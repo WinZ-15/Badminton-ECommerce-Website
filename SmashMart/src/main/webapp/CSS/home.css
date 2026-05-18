@@ -230,7 +230,7 @@ html, body {
     background: #111827;
     color: white;
     margin-top: auto;
-    padding: 40px 0;
+    padding: 20px 0;
     margin-bottom: 0;
 }
 
@@ -242,10 +242,10 @@ html, body {
     .footer-bottom {
         text-align: center;
         opacity: 0.7;
-        margin-top: auto;
-        padding-bottom: 30px;
+        margin-top: 10px;
+        padding-bottom: 0px;
     }
-   /* Background overlay */
+
 .popup-bg {
     position: fixed;
     inset: 0;
@@ -258,7 +258,7 @@ html, body {
     z-index: 1000;
 }
 
-/* Popup card */
+
 .popup {
     background: white;
     padding: 25px 30px;
@@ -271,9 +271,7 @@ html, body {
     animation: popupAnim 0.3s ease;
 }
 
-/* Icon */
 .popup .icon {
-
     margin-bottom: 10px;
 }
 

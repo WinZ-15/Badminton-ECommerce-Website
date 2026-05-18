@@ -138,7 +138,7 @@ main.content {
   color: #93c5fd;
 }
 
-/* ✅ SECTION HEADER */
+/*  SECTION HEADER */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -146,7 +146,7 @@ main.content {
   margin: 25px 0 15px;
 }
 
-/* ✅ SEARCH */
+/*  SEARCH */
 .search-form {
   display: flex;
   gap: 5px;
@@ -165,14 +165,12 @@ main.content {
   padding: 6px 10px;
 }
 
-/* ✅ PRODUCTS GRID (FIXED DOT ✅) */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* ✅ PRODUCT CARD */
 .product-card {
   background: white;
   border-radius: 12px;
@@ -217,7 +215,6 @@ main.content {
   color: #777;
 }
 
-/* ✅ CARD FOOTER */
 .card-footer {
   margin-top: auto;
   display: flex;
@@ -225,13 +222,11 @@ main.content {
   align-items: center;
 }
 
-/* ✅ PRICE */
 .price {
   font-weight: bold;
   color: #1e3a8a;
 }
 
-/* ✅ ACTIONS */
 .actions {
   display: flex;
   gap: 5px;
@@ -242,7 +237,6 @@ main.content {
   padding: 2px;
 }
 
-/* ✅ BUTTONS */
 .btn {
   border: none;
   cursor: pointer;
@@ -263,7 +257,6 @@ main.content {
   background: #1d4ed8;
 }
 
-/* ✅ FOOTER (MATCH ADMIN STYLE) */
 .site-footer {
   background: #1e3a8a;
   color: white;
@@ -271,7 +264,7 @@ main.content {
   text-align: center;
 }
 
-/* ✅ RESPONSIVE */
+
 @media (max-width: 1000px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
