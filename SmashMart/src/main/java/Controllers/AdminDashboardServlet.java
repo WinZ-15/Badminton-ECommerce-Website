@@ -63,4 +63,11 @@ public class AdminDashboardServlet extends HttpServlet {
             throw new ServletException("Error loading dashboard data", ex);
         }
     }
+    
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    doGet(request, response);
+}
+
 }

@@ -25,12 +25,13 @@ public class UpdateProductServlet extends HttpServlet {
      * Handles POST request for updating product.
      * 
      * This method:
-     * 1. Retrieves updated product data from the request
-     * 2. Validates required fields
-     * 3. Creates a Product object with updated values
-     * 4. Updates product in the database
-     * 5. Redirects to admin dashboard
-     * 
+     * <ol>
+     * <li> Retrieves updated product data from the request</li>
+     * <li> Validates required fields</li>
+     * <li> Creates a Product object with updated values</li>
+     * <li> Updates product in the database</li>
+     * <li> Redirects to admin dashboard</li>
+     * </ol>
      * If validation fails, the user is redirected back to
      * the edit page with an error.
      * 

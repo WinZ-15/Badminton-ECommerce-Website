@@ -12,27 +12,27 @@ import java.io.IOException;
 
 /**
  * Servlet responsible for loading the Edit Product page.
- * 
- * This servlet retrieves the selected product details based on
- * the provided product ID and forwards the data to the edit
- * product JSP page. It also loads available categories so the
- * admin can update the product category.
+ *
+ * This servlet retrieves the selected product details based on the provided
+ * product ID and forwards the data to the edit product JSP page. It also loads
+ * available categories so the admin can update the product category.
  */
 @WebServlet(name = "EditProductServlet", urlPatterns = {"/editProduct"})
 public class EditProductServlet extends HttpServlet {
 
     /**
      * Handles GET request to display the edit product form.
-     * 
-     * This method:
-     * 1. Retrieves product ID from request
-     * 2. Loads product details from database
-     * 3. Loads all categories for dropdown selection
-     * 4. Forwards data to editProduct.jsp
-     * 
-     * If product ID is invalid or data is not found,
-     * the user is redirected to the admin dashboard.
-     * 
+     *
+     * <ol>
+     * <li>Retrieves product ID from request</li>
+     * <li>Loads product details from database</li>
+     * <li>Loads all categories for dropdown selection</li>
+     * <li>Forwards data to editProduct.jsp</li>
+     * </ol>
+     *
+     * If product ID is invalid or data is not found, the user is redirected to
+     * the admin dashboard.
+     *
      * @param req HttpServletRequest containing product ID
      * @param resp HttpServletResponse used for forwarding/redirecting
      * @throws ServletException if servlet error occurs

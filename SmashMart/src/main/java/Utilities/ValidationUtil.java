@@ -1,7 +1,5 @@
 package Utilities;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.regex.Pattern;
 import jakarta.servlet.http.Part;
 
@@ -25,16 +23,6 @@ public class ValidationUtil {
     }
 
     /**
-     * Checks if a string contains only alphabetic characters.
-     * 
-     * @param value input string
-     * @return true if only letters, false otherwise
-     */
-    public static boolean isAlphabetic(String value) {
-        return value != null && value.matches("^[a-zA-Z]+$");
-    }
-
-    /**
      * Checks if a string starts with a letter and contains only
      * alphanumeric characters.
      * 
@@ -43,18 +31,6 @@ public class ValidationUtil {
      */
     public static boolean isAlphanumericStartingWithLetter(String value) {
         return value != null && value.matches("^[a-zA-Z][a-zA-Z0-9]*$");
-    }
-
-    /**
-     * Validates gender value.
-     * 
-     * @param value input gender string
-     * @return true if value is "male" or "female", false otherwise
-     */
-    public static boolean isValidGender(String value) {
-        return value != null &&
-               (value.equalsIgnoreCase("male") ||
-                value.equalsIgnoreCase("female"));
     }
 
     /**
@@ -110,9 +86,7 @@ public class ValidationUtil {
         if (imagePart == null || isNullOrEmpty(imagePart.getSubmittedFileName())) {
             return false;
         }
-
         String fileName = imagePart.getSubmittedFileName().toLowerCase();
-
         return fileName.endsWith(".jpg") ||
                fileName.endsWith(".jpeg") ||
                fileName.endsWith(".png") ||
@@ -130,17 +104,4 @@ public class ValidationUtil {
         return password != null && password.equals(retypePassword);
     }
 
-    /**
-     * Checks if a user is at least 16 years old.
-     * 
-     * @param dob date of birth
-     * @return true if age is 16 or above, false otherwise
-     */
-    public static boolean isAgeAtLeast16(LocalDate dob) {
-        if (dob == null) {
-            return false;
-        }
-        LocalDate today = LocalDate.now();
-        return Period.between(dob, today).getYears() >= 16;
-    }
 }

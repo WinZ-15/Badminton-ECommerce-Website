@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2026 at 04:44 PM
+-- Generation Time: May 19, 2026 at 04:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,14 +64,10 @@ CREATE TABLE `orderitems` (
 --
 
 INSERT INTO `orderitems` (`orderItemID`, `orderID`, `productID`, `quantity`, `subtotal`, `createdAt`) VALUES
-(1, 1, 1, 1, 500, '2026-05-16 05:59:16'),
-(4, 3, 1, 2, 500, '2026-05-16 08:31:12'),
-(5, 4, 1, 1, 1000, '2026-05-16 11:37:43'),
-(6, 4, 2, 4, 480, '2026-05-16 11:37:43'),
-(7, 5, 2, 1, 120, '2026-05-18 13:51:58'),
-(8, 5, 8, 1, 20, '2026-05-18 13:51:58'),
-(9, 6, 6, 2, 40, '2026-05-18 14:05:01'),
-(10, 6, 8, 2, 40, '2026-05-18 14:05:01');
+(19, 10, 16, 1, 50, '2026-05-19 10:34:19'),
+(21, 10, 15, 1, 1100, '2026-05-19 10:34:19'),
+(22, 11, 19, 3, 900, '2026-05-19 11:38:55'),
+(24, 11, 15, 2, 2200, '2026-05-19 11:38:55');
 
 -- --------------------------------------------------------
 
@@ -98,7 +94,12 @@ INSERT INTO `orders` (`orderID`, `userID`, `totalAmount`, `status`, `createdAt`,
 (3, 4, 500, 'PENDING', '2026-05-16 08:31:12', '2026-05-16 08:31:12'),
 (4, 5, 1480, 'PENDING', '2026-05-16 11:37:43', '2026-05-16 11:37:43'),
 (5, 7, 140, 'PENDING', '2026-05-18 13:51:58', '2026-05-18 13:51:58'),
-(6, 7, 80, 'PENDING', '2026-05-18 14:05:01', '2026-05-18 14:05:01');
+(6, 7, 80, 'PENDING', '2026-05-18 14:05:01', '2026-05-18 14:05:01'),
+(7, 7, 1160, 'PENDING', '2026-05-18 16:39:31', '2026-05-18 16:39:31'),
+(8, 7, 300, 'PENDING', '2026-05-19 04:25:48', '2026-05-19 04:25:48'),
+(9, 7, 12, 'PENDING', '2026-05-19 08:12:29', '2026-05-19 08:12:29'),
+(10, 7, 1650, 'PENDING', '2026-05-19 10:34:19', '2026-05-19 10:34:19'),
+(11, 7, 3600, 'PENDING', '2026-05-19 11:38:55', '2026-05-19 11:38:55');
 
 -- --------------------------------------------------------
 
@@ -123,10 +124,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productID`, `name`, `description`, `price`, `brand`, `image`, `categoryID`, `createdAt`, `updatedAt`) VALUES
-(1, 'Yonex Astrox 100ZZ', 'Professional high-end racket', 1000, 'Yonex', 'Resources/racket1.jpg', 1, '2026-05-16 05:57:44', '2026-05-16 11:33:20'),
-(2, 'Li-Ning Turbo X50', 'Mid range racket', 120, 'Li-Ning', 'Resources/racket2.jpg', 2, '2026-05-16 05:57:44', '2026-05-16 05:57:44'),
-(6, 'Practice Shuttle', 'Low cost shuttlecock', 20, 'Generic', 'Resources/shuttle3.jpg', 6, '2026-05-16 05:57:44', '2026-05-16 09:32:53'),
-(8, 'Beau 7312', 'Lightweight Yellow colored badminton racket', 20, 'Sister', 'Resources/new racket.jpg', 3, '2026-05-17 05:02:58', '2026-05-17 05:02:58');
+(15, 'Yonex Astrox 100ZZ', 'lightweight professional black Racket with cover', 1100, 'Yonex', 'Resources/2nd img.jpg', 1, '2026-05-19 09:44:42', '2026-05-19 09:44:42'),
+(16, 'Yonex Astrox 100ZZ', 'lightweight beginner Racket', 50, 'Tonex', 'Resources/5 img.jpg', 3, '2026-05-19 09:48:06', '2026-05-19 09:48:06'),
+(19, 'Keiro 340', 'orange high tension racket', 300, 'Key', 'Resources/4 img.jpeg', 2, '2026-05-19 10:05:39', '2026-05-19 10:05:39'),
+(20, 'Net Shuttle V2', 'fast and plastic', 50, 'Victor', 'Resources/sh 1.jpeg', 6, '2026-05-19 10:12:15', '2026-05-19 10:12:15'),
+(21, 'Y-33 Shuttle', 'Durable, fast paced plastic shuttles', 200, 'Yonex', 'Resources/sh 2.jpg', 5, '2026-05-19 10:13:18', '2026-05-19 10:13:18');
 
 -- --------------------------------------------------------
 
@@ -189,14 +191,15 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`productID`),
-  ADD KEY `categoryID` (`categoryID`);
+  ADD KEY `idx_product_category` (`categoryID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userID`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `idx_user_email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -212,19 +215,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `orderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `orderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

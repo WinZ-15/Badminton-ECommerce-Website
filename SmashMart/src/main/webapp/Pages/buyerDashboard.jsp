@@ -13,7 +13,7 @@
         <!--  NAVBAR -->
         <header class="navbar">
             <div class="container navbar-inner">
-                    <span class="logo-text">Smash<span>Mart</span></span>
+                <span class="logo-text">Smash<span>Mart</span></span>
                 <div class="user-position">
                     <a  class="user-info" href="${pageContext.request.contextPath}/profile">
                         <strong>${user.name}</strong>
@@ -71,7 +71,7 @@
             <section class="product-list">
                 <div class="container">
                     <!-- HEADER -->
-                    
+
                     <div class="section-header">
                         <h2>All Products</h2>
                         <div class="controls">
@@ -106,7 +106,7 @@
                     <div class="products-grid">
                         <c:forEach var="product" items="${products}">
                             <div class="product-card">
-
+                               
                                 <!-- IMAGE -->
                                 <div class="card-img">
                                     <c:choose>
@@ -169,7 +169,7 @@
 
                         </c:forEach>
                     </div>
-                    
+
                     <!--  EMPTY STATE -->
                     <c:if test="${empty products}">
                         <p class="muted">No products found.</p>

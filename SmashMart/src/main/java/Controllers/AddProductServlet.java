@@ -2,6 +2,7 @@ package Controllers;
 
 import Dao.ProductDAO;
 import Model.Product;
+import Utilities.ValidationUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,31 +17,27 @@ import java.sql.SQLException;
 
 /**
  * Servlet responsible for adding new products to the system.
- * 
- * This servlet handles form submission from the admin dashboard.
- * It processes product details along with image upload,
- * stores the image on the server, and inserts product data
- * into the database.
+ *
+ * This servlet handles form submission from the admin dashboard. It processes
+ * product details along with image upload, stores the image on the server, and
+ * inserts product data into the database.
  */
 @WebServlet(name = "AddProductServlet", urlPatterns = {"/AddProduct"})
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 2,   // 2MB
-        maxFileSize = 1024 * 1024 * 10,        // 10MB
-        maxRequestSize = 1024 * 1024 * 50      // 50MB
+        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50 // 50MB
 )
 public class AddProductServlet extends HttpServlet {
 
     /**
      * Handles POST request for adding a new product.
-     * 
-     * This method:
-     * 1. Retrieves form data (name, brand, price, etc.)
-     * 2. Processes image upload
-     * 3. Saves the image to server directory
-     * 4. Creates Product object
-     * 5. Inserts product into database
-     * 6. Redirects back to admin dashboard
-     * 
+     *
+     * This method: 1. Retrieves form data (name, brand, price, etc.) 2.
+     * Processes image upload 3. Saves the image to server directory 4. Creates
+     * Product object 5. Inserts product into database 6. Redirects back to
+     * admin dashboard
+     *
      * @param req HttpServletRequest containing form data and uploaded file
      * @param resp HttpServletResponse used for redirection
      * @throws ServletException if servlet error occurs
@@ -57,9 +54,23 @@ public class AddProductServlet extends HttpServlet {
         int categoryID = Integer.parseInt(req.getParameter("categoryID"));
         // Handle file upload
         Part filePart = req.getPart("image");
+
+        if (filePart == null || filePart.getSize() == 0) {
+            req.setAttribute("error", "Please upload an image");
+            req.getRequestDispatcher("adminDashboard").forward(req, resp);
+            return;
+        }
+
+//  validate file type
+        if (!ValidationUtil.isValidImageExtension(filePart)) {
+            req.setAttribute("error", "Only JPG, JPEG, PNG, and GIF images are allowed");
+            req.getRequestDispatcher("adminDashboard").forward(req, resp);
+            return;
+        }
+
         String fileName = Paths.get(filePart.getSubmittedFileName())
-                              .getFileName()
-                              .toString();
+                .getFileName()
+                .toString();
         String uploadPath = getServletContext().getRealPath("/") + "Resources";
         // Create directory if it does not exist
         File uploadDir = new File(uploadPath);
@@ -69,7 +80,7 @@ public class AddProductServlet extends HttpServlet {
 
         // Save file to server
         filePart.write(uploadPath + "/" + fileName);
-        
+
         // Create product object
         Product p = new Product();
         p.setName(name);
@@ -87,6 +98,6 @@ public class AddProductServlet extends HttpServlet {
             System.out.println("Error: " + ex.getMessage());
         }
         // Redirect to dashboard
-        resp.sendRedirect("adminDashboard");
+        resp.sendRedirect(req.getContextPath() + "/adminDashboard");
     }
 }

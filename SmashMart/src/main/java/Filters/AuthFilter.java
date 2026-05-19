@@ -13,7 +13,8 @@ import java.io.IOException;
 /**
  * Central authentication and authorization filter.
  *
- * This filter handles: ✅ Cookie-based login authentication ✅ Role-based
+ * first priority Session based authentication 
+ * if session falls falls bask to cookie-based login authentication  Role-based
  * authorization (admin vs buyer)
  */
 @WebFilter(filterName = "AuthFilter", urlPatterns = {"/*"})
@@ -31,7 +32,7 @@ public class AuthFilter implements Filter {
 
         String uri = req.getRequestURI();
 
-        //  Allow static resources
+        //   static resources
         if (uri.endsWith(".css") || uri.endsWith(".js")
                 || uri.endsWith(".png") || uri.endsWith(".jpg")
                 || uri.contains("Resources")) {
@@ -40,7 +41,7 @@ public class AuthFilter implements Filter {
             return;
         }
 
-        //  Allow public pages
+        //   public pages
         if (uri.endsWith("/home")
                 || uri.endsWith("/about.html")
                 || uri.endsWith("/contact.html")
@@ -55,7 +56,6 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession(false);
         User user = null;
 
-        //  1. Check session
         if (session != null) {
             user = (User) session.getAttribute("user");
         }
@@ -81,7 +81,7 @@ public class AuthFilter implements Filter {
             return;
         }
 
-        // Make user available to JSP
+        //  available to JSP
         req.setAttribute("user", user);
 
         //  Block buyer from admin pages
@@ -98,7 +98,7 @@ public class AuthFilter implements Filter {
             return;
         }
 
-        //  Allow access
+        //  access
         chain.doFilter(request, response);
     }
 }

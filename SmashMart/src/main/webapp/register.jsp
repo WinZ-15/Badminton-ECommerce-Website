@@ -15,7 +15,7 @@
             <nav class="navbar">
                 <div class="logo-container">
                     <a class="logo-text" href="${pageContext.request.contextPath}/home">    
-                        <h1>
+                        <h1 >
                     Smash<span style="color: #2563eb;">Mart</span>
                 </h1>
                     </a>

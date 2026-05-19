@@ -60,37 +60,6 @@ public class UserDAO {
     }
 
     /**
-     * Authenticates a user using email and password.
-     * 
-     * @param email user email
-     * @param password user password
-     * @return User object if login is successful, null otherwise
-     */
-    public User loginUser(String email, String password) {
-        try {
-            final String LOGIN_SQL = "SELECT * FROM users WHERE email=? AND password=?;";
-            PreparedStatement ps = conn.prepareStatement(LOGIN_SQL);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                User user = new User();
-                user.setUserID(rs.getInt("userID"));
-                user.setName(rs.getString("name"));
-                user.setEmail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
-                user.setRole(rs.getString("role"));
-                user.setAddress(rs.getString("address"));
-                user.setPhone(rs.getString("phone"));
-                return user;
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
-        return null;
-    }
-
-    /**
      * Retrieves all users from the database.
      * 
      * @return list of all users

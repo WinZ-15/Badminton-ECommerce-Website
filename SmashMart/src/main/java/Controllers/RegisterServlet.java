@@ -3,6 +3,7 @@ package Controllers;
 import Dao.UserDAO;
 import Model.User;
 import Utilities.PasswordUtil;
+import Utilities.ValidationUtil;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,57 +24,74 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("fullName");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");  
+        String name = request.getParameter("fullName").trim();
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password").trim();
+        String confirmPassword = request.getParameter("confirmPassword");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
 
-
         // 1. Validate empty fields
-        if (name == null || name.isEmpty()
-                || email == null || email.isEmpty()
-                || password == null || password.isEmpty()
-                || confirmPassword == null || confirmPassword.isEmpty()) {
+        if (ValidationUtil.isNullOrEmpty(name)
+                || ValidationUtil.isNullOrEmpty(email)
+                || ValidationUtil.isNullOrEmpty(password)
+                || ValidationUtil.isNullOrEmpty(confirmPassword)) {
 
             request.setAttribute("error", "All fields are required");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        // 2. Password match check
-        if (password.length() < 6) {
-            request.setAttribute("error", "Password must be at least 6 characters");
+//  Name
+        if (!ValidationUtil.isAlphanumericStartingWithLetter(name)) {
+            request.setAttribute("error", "Name must start with a letter and contain only letters and numbers");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
+        //2. email
+        if (!ValidationUtil.isValidEmail(email)) {
+            request.setAttribute("error", "Invalid email format");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
+
+        // 3. Password 
+        if (!ValidationUtil.isValidPassword(password)) {
+            request.setAttribute("error", "Password must contain uppercase, number, special character and be at least 6 characters");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
+
+        // 4.  password Check
+        if (!ValidationUtil.doPasswordsMatch(password, confirmPassword)) {
             request.setAttribute("error", "Passwords do not match");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
+
+        // 5. Phone 
+        if (!ValidationUtil.isNullOrEmpty(phone)
+                && !ValidationUtil.isValidPhoneNumber(phone)) {
+
+            request.setAttribute("error", "Invalid phone number format");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
         UserDAO dao = new UserDAO();
 
-        if (!email.contains("@")) {
-            request.setAttribute("error", "Invalid email format");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-            return;
-        }
-
-        // 3. Check duplicate email
+        //  Check duplicate email
         if (dao.getUserByEmail(email) != null) {
             request.setAttribute("error", "Email already registered");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        // 4. Hash password
+        // Hash password
         String hashedPassword = PasswordUtil.getHashPassword(password);
 
-        // 5. Create user
+        // user creating
         User user = new User();
         user.setName(name);
         user.setEmail(email);
@@ -82,10 +100,9 @@ public class RegisterServlet extends HttpServlet {
         user.setAddress(address);
         user.setPhone(phone);
 
-        // 6. Save to DB
+        //  Save to DB
         boolean success = dao.registerUser(user);
 
-        // 7. Redirect
         if (success) {
             response.sendRedirect(request.getContextPath() + "/login");
         } else {

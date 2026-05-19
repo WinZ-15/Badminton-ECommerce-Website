@@ -22,10 +22,11 @@ public class DeleteProductServlet extends HttpServlet {
      * Handles POST request for deleting a product.
      * 
      * This method:
-     * 1. Retrieves the product ID from the request
-     * 2. Calls ProductDAO to delete the product
-     * 3. Redirects back to admin dashboard
-     * 
+     * <ol>
+     * <li> Retrieves the product ID from the request</li>
+     * <li> Calls ProductDAO to delete the product</li>
+     * <li> Redirects back to admin dashboard</li>
+     * </ol>
      * @param req HttpServletRequest containing product ID
      * @param resp HttpServletResponse used for redirection
      * @throws ServletException if servlet error occurs

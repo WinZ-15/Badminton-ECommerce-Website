@@ -4,6 +4,7 @@ import Dao.UserDAO;
 import Model.User;
 import Utilities.CookieUtil;
 import Utilities.PasswordUtil;
+import Utilities.ValidationUtil;
 import Utilities.SessionUtil;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -24,11 +25,17 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password").trim();
+
+        if (ValidationUtil.isNullOrEmpty(email) || ValidationUtil.isNullOrEmpty(password)) {
             request.setAttribute("error", "Please enter email and password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
+        if (!ValidationUtil.isValidEmail(email)) {
+            request.setAttribute("error", "Invalid email format");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
@@ -41,12 +48,12 @@ public class LoginServlet extends HttpServlet {
             boolean matched = PasswordUtil.checkPassword(password, hashedPassword);
 
             if (matched) {
-               SessionUtil.setAttribute(request, "user", user);
+                SessionUtil.setAttribute(request, "user", user);
                 //  Store login info in cookie 
-                 CookieUtil.addCookie(response, "userEmail", user.getEmail(), 60 * 60 * 24); // 1 day
-             
+                CookieUtil.addCookie(response, "userEmail", user.getEmail(), 60 * 60 * 24); // 1 day
+
                 // ROLE CHECK
-              if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+                if ("ADMIN".equalsIgnoreCase(user.getRole())) {
                     response.sendRedirect(request.getContextPath() + "/adminDashboard");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/buyerDashboard");
