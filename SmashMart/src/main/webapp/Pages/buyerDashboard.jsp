@@ -20,7 +20,7 @@
                     </a>
                 </div>
 
-                <!--  RIGHT SIDE ACTIONS -->
+                <!--   ACTIONS -->
                 <nav class="nav-actions">
                     <a href="${pageContext.request.contextPath}/cart"
                        class="nav-btn">
@@ -85,7 +85,7 @@
                                        placeholder="Search products"
                                        value="${param.search}">
 
-                                <!-- CATEGORY FILTER -->
+                                <!--  FILTER -->
                                 <select name="category">
                                     <option value="">All Categories</option>
                                     <c:forEach var="cat" items="${categories}">
@@ -106,7 +106,7 @@
                     <div class="products-grid">
                         <c:forEach var="product" items="${products}">
                             <div class="product-card">
-                               
+
                                 <!-- IMAGE -->
                                 <div class="card-img">
                                     <c:choose>

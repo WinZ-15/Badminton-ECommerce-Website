@@ -19,8 +19,6 @@ body{
     color: #60a5fa;
 }
 
-/* ================= NAVBAR ================= */
-
 .navbar{
     width:100%;
     padding:18px 0;
@@ -76,8 +74,6 @@ body{
     color:#60a5fa;
 }
 
-/* ================= CONTACT SECTION ================= */
-
 .contact-wrapper{
     flex:1;
     display:flex;
@@ -99,8 +95,6 @@ body{
     box-shadow:0 10px 40px rgba(0,0,0,0.35);
     animation:fadeUp 0.8s ease;
 }
-
-/* ================= LEFT SIDE ================= */
 
 .contact-info{
     padding:60px 50px;
@@ -150,8 +144,6 @@ body{
     color:#dbeafe;
     font-size:15px;
 }
-
-/* ================= FORM SECTION ================= */
 
 .contact-form{
     padding:60px 50px;
@@ -229,8 +221,6 @@ button:hover{
     box-shadow:0 10px 20px rgba(37,99,235,0.25);
 }
 
-/* ================= FOOTER ================= */
-
 footer{
     text-align:center;
     padding:20px;
@@ -239,25 +229,20 @@ footer{
     font-size:14px;
 }
 
-
 @media(max-width:900px){
-
     .contact-container{
         grid-template-columns:1fr;
     }
-
     .contact-info,
     .contact-form{
         padding:40px 30px;
     }
-
     .contact-info h1{
         font-size:34px;
     }
 }
 
 @media(max-width:600px){
-
     .container{
         flex-direction:column;
         gap:15px;

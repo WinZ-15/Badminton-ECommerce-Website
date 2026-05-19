@@ -8,7 +8,7 @@
     </head>
     <body>
 
-        <!-- ✅ NAVBAR -->
+        <!--NAVBAR -->
         <header class="navbar">
             <div class="container nav-container">
                 <h2>
@@ -28,14 +28,12 @@
         <!--  HERO -->
         <section class="hero">
             <div class="container hero-content">
-
                 <div class="hero-text">
                     <h1>Elevate Your Badminton Game</h1>
                     <p>
                         Discover premium rackets and shuttlecocks designed for performance,
                         precision, and durability.
                     </p>
-
                     <div class="hero-buttons">
                         <a href="${pageContext.request.contextPath}/register" class="btn primary">Get Started</a>
                     </div>
@@ -59,7 +57,6 @@
                 <h2>Featured Products</h2>
                 <span>Top picks for you</span>
             </div>
-
             <div class="product-grid">
                 <div class="product-card">
                     <img src="${pageContext.request.contextPath}/Resources/home1.jpeg">
@@ -67,21 +64,18 @@
                     <p class="price">$89.99</p>
                     <button onclick="showPopup()">Add to Cart</button>
                 </div>
-
                 <div class="product-card">
                     <img src="${pageContext.request.contextPath}/Resources/home2.jpeg">
                     <h3>Elite Tournament Racket</h3>
                     <p class="price">$129.99</p>
                     <button onclick="showPopup()">Add to Cart</button>
                 </div>
-
                 <div class="product-card">
                     <img src="${pageContext.request.contextPath}/Resources/home3.jpeg">
                     <h3>Feather Shuttlecock</h3>
                     <p class="price">$24.99</p>
                     <button onclick="showPopup()">Add to Cart</button>
                 </div>
-
             </div>
         </section>
 
@@ -100,18 +94,15 @@
         <!--  Review -->
         <section class="testimonials container">
             <h2>What Players Say</h2>
-
             <div class="testi-grid">
                 <div class="testi-card">
                     <p>"Amazing control and power!"</p>
                     <span>- National Player</span>
                 </div>
-
                 <div class="testi-card">
                     <p>"High quality and reliable."</p>
                     <span>- Club Champion</span>
                 </div>
-
                 <div class="testi-card">
                     <p>"Best for training players."</p>
                     <span>- Coach</span>

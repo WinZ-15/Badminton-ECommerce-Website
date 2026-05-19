@@ -10,6 +10,7 @@ body {
 .logo-text span {
     color: #60a5fa;
 }
+
 .navbar{
     width:100%;
     padding:18px 0;
@@ -20,6 +21,7 @@ body {
     top:0;
     z-index:100;
 }
+
 .nav-link{
     text-decoration: none;
     color: white;
@@ -46,6 +48,7 @@ body {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     flex: 1
 }
+
 .team {
     display: flex;
     justify-content: center;
@@ -86,8 +89,6 @@ body {
     line-height: 1.6;
     margin-left: 20px;
 }
-
-/* Values Section */
 
 .info-section p {
     font-size: 20px;

@@ -37,11 +37,11 @@
                         <input type="hidden" name="qty" value="1">
                         <button class="btn primary">Add to Cart</button>
                     </form>
-                        
+
                     <a href="${pageContext.request.contextPath}/buyerDashboard" class="btn secondary">
                         Back
                     </a>
-                        
+
                 </div>
             </div>
         </main>

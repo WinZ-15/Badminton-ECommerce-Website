@@ -1,11 +1,9 @@
-/* ✅ RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ✅ PAGE LAYOUT */
 body {
   min-height: 100vh;
   display: flex;
@@ -30,14 +28,12 @@ main.content {
   flex: 1;
 }
 
-/* ✅ CONTAINER */
 .container {
   max-width: 1400px;
   margin: auto;
   padding: 0 15px;
 }
 
-/* ✅ NAVBAR */
 .navbar {
   background: #1e3a8a;
   color: white;
@@ -80,7 +76,6 @@ main.content {
   text-decoration: none;
 }
 
-
 .navbar-inner {
     display: flex;
     align-items: center;
@@ -93,13 +88,16 @@ main.content {
     font-size: 14px;
     margin-right: 20px;
 }
+
 .user-position{
     justify-content: right;
     align-content: right;
 }
+
 .user-info:hover {
     color: #39ff14;
 }
+
 .success-msg {
     background: #d1fae5;
     color: #065f46;
@@ -111,10 +109,10 @@ main.content {
     font-weight: 500;
 }
 
-
 .nav-btn:hover {
   background: #1d4ed8;
 }
+
 .nav-btn {
     background: #ef4444;
     color: white;
@@ -123,7 +121,6 @@ main.content {
     text-decoration: none;
 }
 
-/* ✅ HERO */
 .hero {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   color: white;
@@ -138,7 +135,6 @@ main.content {
   color: #93c5fd;
 }
 
-/*  SECTION HEADER */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -146,7 +142,6 @@ main.content {
   margin: 25px 0 15px;
 }
 
-/*  SEARCH */
 .search-form {
   display: flex;
   gap: 5px;
@@ -263,7 +258,6 @@ main.content {
   padding: 12px;
   text-align: center;
 }
-
 
 @media (max-width: 1000px) {
   .products-grid {

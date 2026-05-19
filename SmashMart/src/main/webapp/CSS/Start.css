@@ -3,9 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
     height: 100%;
 }
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background:
@@ -17,37 +20,42 @@ body {
     flex-direction: column;
 }
 
+
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: center;  
-    padding: 0.8rem 2rem;
+    justify-content: center;
+    padding: 12px 32px;
 }
 
 header {
     color: #fff;
-    padding: 1rem 2rem;
-}
-.logo {
-    font-size: 1.4rem;
+    padding: 16px 32px;
 }
 
-/* Auth Container */
+.logo {
+    font-size: 22px;
+}
+
 .auth-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 24px;
 }
 
 .auth-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(240,255,250,0.85));
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.85),
+        rgba(240,255,250,0.85)
+    );
     backdrop-filter: blur(14px);
-    border-radius: 28px;            
-    padding: 3.5rem;
+    border-radius: 28px;
+    padding: 56px;
     width: 90%;
-    max-width: 500px;            
+    max-width: 500px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     text-align: center;
     position: relative;
@@ -55,60 +63,60 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .auth-card::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: 28px;
-    padding: 2px; 
-    background: linear-gradient(135deg, #5a4fff, #a500ff);
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
+    padding: 2px;
     pointer-events: none;
 }
-
 
 .auth-card:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
+
 .auth-card h2 {
     color: #5a4fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
 }
+
 .subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 15px;
+    margin-bottom: 24px;
     color: #555;
 }
 
 .form-group {
     text-align: left;
-    margin-bottom: 1.2rem;
+    margin-bottom: 18px;
 }
+
 .form-group label {
-    font-size: 0.85rem;
+    font-size: 13px;
     color: #5a4fff;
 }
-.form-group input, .form-group select {
+
+.form-group input,
+.form-group select {
     width: 100%;
-    padding: 0.8rem;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin-top: 0.3rem;
+    margin-top: 5px;
     transition: border 0.3s;
 }
-.form-group input:focus, .form-group select:focus {
+
+.form-group input:focus,
+.form-group select:focus {
     border-color: #5a4fff;
     outline: none;
 }
 
 .auth-btn {
     width: 100%;
-    padding: 0.9rem;
+    padding: 14px;
     background: linear-gradient(135deg, #5a4fff, #a500ff);
     color: #fff;
     border: none;
@@ -117,27 +125,30 @@ header {
     cursor: pointer;
     transition: transform 0.2s, background 0.3s;
 }
+
 .auth-btn:hover {
     transform: scale(1.05);
     background: linear-gradient(135deg, #6b5dff, #b300ff);
 }
 
 .switch {
-    margin-top: 1.2rem;
-    font-size: 0.85rem;
+    margin-top: 20px;
+    font-size: 13px;
 }
+
 .switch a {
     color: #009f75;
     text-decoration: none;
     font-weight: 600;
 }
+
 .switch a:hover {
     text-decoration: underline;
 }
 
 footer {
     text-align: center;
-    padding: 1rem;
+    padding: 16px;
     background: #222;
     color: #fff;
 }
@@ -146,49 +157,40 @@ footer {
     display: flex;
     align-items: center;
 }
+
 .logo-img {
-    height: 36px;   
+    height: 36px;
     width: auto;
     margin-right: 8px;
 }
+
 .logo-text {
-    font-size: 1.3rem;                
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color:white;
+    color: white;
     text-decoration: none;
 }
 
 @media (max-width: 768px) {
-    .auth-card {
-        padding: 1.8rem;
-        border-radius: 20px;
-    }
-
     .auth-card h2 {
-        font-size: 1.4rem;
+        font-size: 20px;
     }
 
     .subtitle {
-        font-size: 0.85rem;
+        font-size: 14px;
     }
 
     .form-group input,
     .form-group select {
-        padding: 0.7rem;
+        padding: 10px;
     }
 
     .auth-btn {
-        padding: 0.8rem;
+        padding: 12px;
     }
 
     .navbar {
-        padding: 0.5rem 1rem;
-    }
-
-    .logo-text {
-        font-size: 1.1rem;
+        padding: 10px 16px;
     }
 }
-
-

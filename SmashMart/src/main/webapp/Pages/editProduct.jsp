@@ -10,12 +10,10 @@
     </head>
     <body>
 
-        <!-- Navbar (same as dashboard) -->
+        <!-- Navbar -->
         <header class="navbar">
             <div class="container navbar-inner">
-                    <span class="logo-text">Smash<span>Mart</span></span>
-                </a>
-
+                <span class="logo-text">Smash<span>Mart</span></span>
                 <nav class="nav-actions">
                     <a href="${pageContext.request.contextPath}/adminDashboard" class="nav-btn">Back</a>
                     <a href="${pageContext.request.contextPath}/logout" class="nav-btn">Logout</a>
@@ -24,7 +22,6 @@
         </header>
 
         <main class="content">
-
             <!-- Hero -->
             <section class="hero compact">
                 <div class="container">
@@ -47,26 +44,21 @@
                             <input type="hidden" name="productID" value="${product.productID}">
                             <label>Product Name</label>
                             <input type="text" name="name" value="${product.name}" required>
-
                             <label>Brand</label>
                             <input type="text" name="brand" value="${product.brand}" required>
-
                             <label>Description</label>
                             <textarea name="description">${product.description}</textarea>
-                            
                             <label>Category</label>
                             <select name="categoryID" required>
                                 <c:forEach var="cat" items="${categories}">
                                     <option value="${cat.categoryID}"
-                                        <c:if test="${cat.categoryID == product.categoryID}">selected</c:if>>
+                                            <c:if test="${cat.categoryID == product.categoryID}">selected</c:if>>
                                         ${cat.categoryName}
                                     </option>
                                 </c:forEach>
                             </select>
-
                             <label>Price</label>
                             <input type="number" name="price" value="${product.price}" step="0.01" required>
-
                             <button type="submit" class="btn primary" style="margin-top:15px;">
                                 Save Changes
                             </button>

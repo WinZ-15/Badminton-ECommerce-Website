@@ -101,28 +101,30 @@
             <!-- ORDERS -->
             <div class="card">
                 <h2> Orders</h2>
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>User ID</th>
-                            <th>Total</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="order" items="${orders}">
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <thead>
                             <tr>
-                                <td>${order.orderID}</td>
-                                <td>${order.userID}</td>
-                                <td>${order.totalAmount}</td>
-                                <td>${order.status}</td>
-                                <td>${order.createdAt}</td>
+                                <th>Order ID</th>
+                                <th>User ID</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="order" items="${orders}">
+                                <tr>
+                                    <td>${order.orderID}</td>
+                                    <td>${order.userID}</td>
+                                    <td>${order.totalAmount}</td>
+                                    <td>${order.status}</td>
+                                    <td>${order.createdAt}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!--  PRODUCTS -->
@@ -173,24 +175,26 @@
             <!-- Users -->
             <div class="card">
                 <h2>All Users</h2>
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="u" items="${users}">
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <thead>
                             <tr>
-                                <td>${u.name}</td>
-                                <td>${u.email}</td>
-                                <td>${u.role}</td>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="u" items="${users}">
+                                <tr>
+                                    <td>${u.name}</td>
+                                    <td>${u.email}</td>
+                                    <td>${u.role}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
 
