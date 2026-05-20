@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f7fb;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: #1e3a8a;
+    color: white;
+    padding: 15px 0;
+}
+
+.navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+    width: 90%;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-text span {
+    color: #60a5fa;
+}
+
+.nav-btn-logout {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #ef4444;
+    color: whitesmoke;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.dashboard-container {
+    flex: 1;
+    max-width: 1100px;
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    color: #111827;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-card h2 {
+    color: #2563eb;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    color: #6b7280;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.product-form {
+    width: 100%;
+}
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.product-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.table-wrapper {
+    margin-top: 10px;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    background: white;
+}
+
+.product-table thead {
+    background: #1e3a8a;
+    color: white;
+}
+
+.product-table th,
+.product-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 14px;
+}
+
+.product-table tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.product-table tbody tr:hover {
+    background: #eef2ff;
+}
+
+.btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.btnprimary {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #2563eb;
+    color: whitesmoke;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btnedit,
+.btndelete {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btnedit {
+    background: #2563eb;
+    color: white;
+}
+
+.btnedit:hover {
+    background: #1d4ed8;
+}
+
+.btndelete {
+    background: #ef4444;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btndelete:hover {
+    background: #dc2626;
+}
+
+.actions {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+@media (max-width: 992px) {
+
+    .dashboard-header h1 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dashboard-container {
+        width: 92%;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-header h1 {
+        font-size: 22px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .btnprimary {
+        width: 100%;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .btnedit,
+    .btndelete {
+        width: 100%;
+        text-align: center;
+    }
+
+    .product-table {
+        min-width: 650px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 0;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .dashboard-container {
+        width: 94%;
+    }
+
+    .dashboard-header h1 {
+        font-size: 20px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .product-form input,
+    .product-form textarea,
+    .product-form select {
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    .footer {
+        font-size: 13px;
+    }
+}
