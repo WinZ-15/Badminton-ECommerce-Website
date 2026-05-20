@@ -29,6 +29,12 @@
                 <p><strong>Address:</strong> ${user.address}</p>
                 <p><strong>Contact:</strong> ${user.phone}</p>
             </div>
+
+            <form action="${pageContext.request.contextPath}/editProfile" method="get">
+                <button type="submit" class="btn">Edit Profile</button>
+            </form>
+
         </main>
+
     </body>
 </html>

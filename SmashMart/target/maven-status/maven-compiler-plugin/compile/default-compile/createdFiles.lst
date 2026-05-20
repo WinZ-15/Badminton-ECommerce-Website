@@ -24,6 +24,7 @@ Dao\OrderDAO.class
 Model\CartItem.class
 Controllers\AdminDashboardServlet.class
 Controllers\CartServlet.class
+Controllers\EditProfileServlet.class
 Controllers\AddToCartServlet.class
 Utilities\CookieUtil.class
 Model\OrderItem.class

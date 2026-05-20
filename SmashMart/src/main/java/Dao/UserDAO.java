@@ -111,4 +111,18 @@ public class UserDAO {
         }
         return null;
     }
+    
+    public void updateUser(User user) throws SQLException {
+    String sql = "UPDATE users SET name=?, address=?, phone=?, password=? WHERE email=?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, user.getName());
+    ps.setString(2, user.getAddress());
+    ps.setString(3, user.getPhone());
+    ps.setString(4, user.getPassword());
+    ps.setString(5, user.getEmail()); // ✅ email is NOT changed
+
+    ps.executeUpdate();
+
+}
 }
