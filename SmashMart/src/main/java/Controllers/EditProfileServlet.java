@@ -26,7 +26,6 @@ public class EditProfileServlet extends HttpServlet {
                 .forward(request, response);
     }
 
-    // HANDLE UPDATE (POST)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

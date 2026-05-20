@@ -112,6 +112,18 @@ public class UserDAO {
         return null;
     }
     
+
+/**
+ * Updates an existing user's details in the database.
+ * This method updates the user's name, address, phone, and password
+ * based on the provided {@link User} object. The user is identified
+ * by their email address, which is not modified.
+ *
+ * @param user the {@link User} object containing updated user information;
+ *             must include a valid email to identify the record in the database
+ * @throws SQLException if a database access error occurs or the SQL execution fails
+ */
+
     public void updateUser(User user) throws SQLException {
     String sql = "UPDATE users SET name=?, address=?, phone=?, password=? WHERE email=?";
 
@@ -120,7 +132,7 @@ public class UserDAO {
     ps.setString(2, user.getAddress());
     ps.setString(3, user.getPhone());
     ps.setString(4, user.getPassword());
-    ps.setString(5, user.getEmail()); // ✅ email is NOT changed
+    ps.setString(5, user.getEmail());
 
     ps.executeUpdate();
 
