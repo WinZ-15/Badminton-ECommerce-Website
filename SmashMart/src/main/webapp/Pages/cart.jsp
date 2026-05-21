@@ -16,7 +16,7 @@
         </header>
 
         <main class="container">
-            <!--  EMPTY -->
+            <!--  EMPTY SITUATION IN CART-->
             <c:if test="${empty cartItems}">
                 <p class="empty">Your cart is empty.</p>
                 <a href="${pageContext.request.contextPath}/buyerDashboard" class="btn">
@@ -49,7 +49,8 @@
                                 <td>${item.quantity}</td>
                                 <td>$${item.product.price * item.quantity}</td>
                                 <td>
-                                    <!--  REMOVE -->
+                                    
+                                    <!--  REMOVE Product -->
                                     <form action="${pageContext.request.contextPath}/removeCartItem"
                                           method="post">
                                         <input type="hidden" name="productID"
@@ -75,7 +76,7 @@
                     </form>
                 </div>
 
-                <!-- BACK -->
+                <!-- BACK  BUTTON-->
                 <a href="${pageContext.request.contextPath}/buyerDashboard"
                    class="btn">
                     Continue Shopping

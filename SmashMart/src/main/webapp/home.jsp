@@ -8,7 +8,6 @@
     </head>
     <body>
 
-        <!--NAVBAR -->
         <header class="navbar">
             <div class="container nav-container">
                 <h2>
@@ -25,7 +24,6 @@
             </div>
         </header>
 
-        <!--  HERO -->
         <section class="hero">
             <div class="container hero-content">
                 <div class="hero-text">
@@ -41,7 +39,7 @@
             </div>
         </section>
 
-        <!--  TRUST -->
+        <!--  TRUST/ SPECIALITY -->
         <section class="trust">
             <div class="container trust-grid">
                 <div> Free Shipping</div>
@@ -51,7 +49,7 @@
             </div>
         </section>
 
-        <!--  PRODUCTS -->
+        <!--  PRODUCTS IMAGE SHOW -->
         <section class="products container">
             <div class="section-header">
                 <h2>Featured Products</h2>
@@ -79,7 +77,7 @@
             </div>
         </section>
 
-        <!--  CATEGORIES -->
+        <!--  CATEGORIES/ PRODUCT TYPE-->
         <section class="categories">
             <div class="container">
                 <h2>Shop by Category</h2>
@@ -91,7 +89,7 @@
             </div>
         </section>
 
-        <!--  Review -->
+        <!--  Review PART/ FEEDBACK -->
         <section class="testimonials container">
             <h2>What Players Say</h2>
             <div class="testi-grid">
@@ -110,7 +108,7 @@
             </div>
         </section>
 
-        <!-- BOTTOM -->
+        <!-- SECTION BOTTOM -->
         <section class="cta">
             <div class="container">
                 <h2>Upgrade Your Game Today</h2>
@@ -118,7 +116,6 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer class="footer">
             <div class="container footer-grid">
                 <div>
@@ -154,17 +151,17 @@
                 popup.style.display = "flex";
             }
 
-            // close popup
+            //  for pop up close
             closeBtn.onclick = () => {
                 popup.style.display = "none";
             };
 
-            // go to login
+            // go to login page after button click
             loginBtn.onclick = () => {
                 window.location.href = "${pageContext.request.contextPath}/login";
             };
 
-            // click outside to close
+            // function for clciking outside to close
             window.onclick = (e) => {
                 if (e.target === popup) {
                     popup.style.display = "none";

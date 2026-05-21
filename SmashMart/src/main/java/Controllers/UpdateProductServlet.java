@@ -52,7 +52,7 @@ public class UpdateProductServlet extends HttpServlet {
         double price = Double.parseDouble(req.getParameter("price"));
         int categoryID = Integer.parseInt(req.getParameter("categoryID"));
 
-        // Basic validation
+        //  validation
         if (name == null || name.isEmpty()) {
             resp.sendRedirect("editProduct?error=1");
             return;

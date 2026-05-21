@@ -10,7 +10,6 @@
     </head>
     <body>
 
-        <!-- Navbar -->
         <header class="navbar">
             <div class="container navbar-inner">
                 <span class="logo-text">Smash<span>Mart</span></span>
@@ -22,7 +21,6 @@
         </header>
 
         <main class="content">
-            <!-- Hero -->
             <section class="hero compact">
                 <div class="container">
                     <div class="hero-copy">
@@ -68,7 +66,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="site-footer">
             <div class="container footer-inner">
                 <div class="footer-logo">Smash<span>Mart</span></div>

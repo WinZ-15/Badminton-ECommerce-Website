@@ -7,13 +7,11 @@
         <meta charset="UTF-8">
         <title>Analytics - SmashMart</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/analytics.css">
-        <!-- Chart -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
 
-        <!-- NAVBAR -->
-        <header class="navbar">
+        <!-- NAVBAR -->        <header class="navbar">
             <div class="container navbar-inner" style="display:flex; justify-content: space-between; align-items: center;">
                 <span class="logo-text">Smash<span>Mart</span></span>
 
@@ -23,7 +21,6 @@
             </div>
         </header>
 
-        <!--  MAIN -->
         <main class="container">
             <h1>Analytics Overview</h1>
 
@@ -57,14 +54,9 @@
                     <h3>Platform Growth</h3>
                     <canvas id="growthChart"></canvas>
                 </div>
-                <div class="card full">
-                    <h3>Weekly Sales Trend</h3>
-                    <canvas id="weeklyChart"></canvas>
-                </div>
             </div>
         </main>
 
-        <!--  FOOTER -->
         <footer class="site-footer">
             <p>&copy; 2026 SmashMart</p>
         </footer>
@@ -95,24 +87,6 @@
                             borderColor: '#2563eb',
                             fill: false,
                             tension: 0.3
-                        }]
-                }
-            });
-
-            //  Weekly Sales Trend
-            new Chart(document.getElementById('weeklyChart'), {
-                type: 'line',
-                data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                    datasets: [{
-                            label: 'Daily Sales',
-                            data: [
-            <c:forEach var="val" items="${weeklyTrend}" varStatus="loop">
-                ${val}<c:if test="${!loop.last}">,</c:if>
-            </c:forEach>
-                            ],
-                            borderColor: '#10b981',
-                                    fill: false
                         }]
                 }
             });

@@ -20,7 +20,7 @@ public class BuyerDashboardServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            // 1. LOADING PRODUCTS
+            //LOADING PRODUCTS
             ProductDAO dao = new ProductDAO();
             String search = request.getParameter("search");
             String category = request.getParameter("category");
@@ -39,7 +39,7 @@ public class BuyerDashboardServlet extends HttpServlet {
             CategoryDAO cdao = new CategoryDAO();
             request.setAttribute("categories", cdao.getAllCategories());
 
-            //  2. CART COUNT Using SESSION
+            //  CART COUNT Using SESSION
             HttpSession session = request.getSession(false);
             int cartCount = 0;
             if (session != null) {
@@ -47,11 +47,11 @@ public class BuyerDashboardServlet extends HttpServlet {
                 cartCount = (cart != null) ? cart.size() : 0;
             }
 
-            // 3. SETTING ATTRIBUTES
+            // SETTING ATTRIBUTES
             request.setAttribute("products", products);
             request.setAttribute("cartCount", cartCount);
 
-            //  4. FORWARDING TO JSP
+            //  FORWARDING TO JSP
             RequestDispatcher rd = request.getRequestDispatcher("Pages/buyerDashboard.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {

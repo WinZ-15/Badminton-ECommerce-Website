@@ -21,14 +21,14 @@ public class CheckOutServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        //  1. Get user
+        //  Get user
         User user = (User) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("login");
             return;
         }
 
-        //  2. Get cart
+        //   Get cart from session 
         ArrayList<Integer> cart =
                 (ArrayList<Integer>) session.getAttribute("cart");
 
@@ -58,14 +58,14 @@ public class CheckOutServlet extends HttpServlet {
                 }
             }
 
-            //  3. Create Order
+            //  Create Order
             int orderID = orderDAO.createOrder(user.getUserID(), total);
             if (orderID == -1) {
                 response.sendRedirect("cart?error=1");
                 return;
             }
 
-            //  4. Insert Order Items ✅ FIX
+            //  nsert Order Items ✅ FIX
             for (int productId : map.keySet()) {
                 Product p = pdao.getProductById(productId);
                 int qty = map.get(productId);
@@ -75,10 +75,10 @@ public class CheckOutServlet extends HttpServlet {
                 }
             }
 
-            //  5. Clear cart
+            // Clear cart
             session.removeAttribute("cart");
 
-            //  6. Redirect
+            //  Redirect
             response.sendRedirect(request.getContextPath() + "/buyerDashboard?success=1");
 
         } catch (Exception e) {

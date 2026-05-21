@@ -10,7 +10,7 @@
               href="${pageContext.request.contextPath}/CSS/buyerDashboard.css">
     </head>
     <body>
-        <!--  NAVBAR -->
+
         <header class="navbar">
             <div class="container navbar-inner">
                 <span class="logo-text">Smash<span>Mart</span></span>
@@ -20,7 +20,6 @@
                     </a>
                 </div>
 
-                <!--   ACTIONS -->
                 <nav class="nav-actions">
                     <a href="${pageContext.request.contextPath}/cart"
                        class="nav-btn">
@@ -45,7 +44,6 @@
             </script>
         </c:if>
 
-        <!--  MAIN -->
         <main class="content">
             <c:if test="${param.success == '1'}">
                 <div class="success-msg">
@@ -53,7 +51,6 @@
                 </div>
             </c:if>
 
-            <!--  HERO -->
             <section class="hero compact">
                 <div class="container">
                     <div class="hero-copy">
@@ -85,7 +82,7 @@
                                        placeholder="Search products"
                                        value="${param.search}">
 
-                                <!--  FILTER -->
+                                <!--  Category FILTER -->
                                 <select name="category">
                                     <option value="">All Categories</option>
                                     <c:forEach var="cat" items="${categories}">
@@ -120,7 +117,6 @@
                                     </c:choose>
                                 </div>
 
-                                <!-- BODY -->
                                 <div class="card-body">
                                     <div clzss="brand">${product.brand}</div>
                                     <h3 class="card-name">${product.name}</h3>
@@ -128,7 +124,6 @@
                                         ${product.description}
                                     </p>
 
-                                    <!-- FOOTER -->
                                     <div class="card-footer">
                                         <div class="price">
                                             $${product.price}
@@ -178,7 +173,6 @@
             </section>
         </main>
 
-        <!-- FOOTER -->
         <footer class="site-footer">
             <div class="container footer-inner">
                 <div class="footer-logo">

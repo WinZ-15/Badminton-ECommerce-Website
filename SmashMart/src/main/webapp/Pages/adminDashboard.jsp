@@ -11,7 +11,6 @@
     </head>
     <body>
 
-        <!--NAVBAR -->
         <header class="navbar">
             <div class="container navbar-inner">
                 <span class="logo-text"> Smash<span>Mart</span></span>
@@ -27,7 +26,6 @@
             </div>
         </header>
 
-        <!--  MAIN -->
         <main class="dashboard-container">
             <!--  HEADER -->
             <div class="dashboard-header">
@@ -58,7 +56,7 @@
                 </div>
             </div>
 
-            <!-- ADD PRODUCT -->
+            <!-- ADD PRODUCT  form-->
             <div class="card">
                 <h2>Add Product</h2>
                 <c:if test="${not empty error}">
@@ -198,7 +196,6 @@
             </div>
         </main>
 
-        <!--  FOOTER -->
         <footer class="footer">
             <p>&copy; 2026 SmashMart</p>
         </footer>

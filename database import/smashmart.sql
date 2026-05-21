@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2026 at 04:32 PM
+-- Generation Time: May 21, 2026 at 05:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,7 +67,13 @@ INSERT INTO `orderitems` (`orderItemID`, `orderID`, `productID`, `quantity`, `su
 (19, 10, 16, 1, 50, '2026-05-19 10:34:19'),
 (21, 10, 15, 1, 1100, '2026-05-19 10:34:19'),
 (22, 11, 19, 3, 900, '2026-05-19 11:38:55'),
-(24, 11, 15, 2, 2200, '2026-05-19 11:38:55');
+(24, 11, 15, 2, 2200, '2026-05-19 11:38:55'),
+(25, 12, 16, 1, 50, '2026-05-20 14:26:38'),
+(26, 13, 16, 1, 50, '2026-05-20 15:02:57'),
+(27, 13, 19, 1, 300, '2026-05-20 15:02:57'),
+(28, 14, 15, 1, 1100, '2026-05-20 16:23:09'),
+(29, 15, 16, 1, 50, '2026-05-21 03:46:44'),
+(30, 15, 19, 1, 300, '2026-05-21 03:46:44');
 
 -- --------------------------------------------------------
 
@@ -99,7 +105,11 @@ INSERT INTO `orders` (`orderID`, `userID`, `totalAmount`, `status`, `createdAt`,
 (8, 7, 300, 'PENDING', '2026-05-19 04:25:48', '2026-05-19 04:25:48'),
 (9, 7, 12, 'PENDING', '2026-05-19 08:12:29', '2026-05-19 08:12:29'),
 (10, 7, 1650, 'PENDING', '2026-05-19 10:34:19', '2026-05-19 10:34:19'),
-(11, 7, 3600, 'PENDING', '2026-05-19 11:38:55', '2026-05-19 11:38:55');
+(11, 7, 3600, 'PENDING', '2026-05-19 11:38:55', '2026-05-19 11:38:55'),
+(12, 7, 50, 'PENDING', '2026-05-20 14:26:38', '2026-05-20 14:26:38'),
+(13, 11, 350, 'PENDING', '2026-05-20 15:02:57', '2026-05-20 15:02:57'),
+(14, 13, 1100, 'PENDING', '2026-05-20 16:23:09', '2026-05-20 16:23:09'),
+(15, 14, 350, 'PENDING', '2026-05-21 03:46:44', '2026-05-21 03:46:44');
 
 -- --------------------------------------------------------
 
@@ -127,8 +137,7 @@ INSERT INTO `products` (`productID`, `name`, `description`, `price`, `brand`, `i
 (15, 'Yonex Astrox 100ZZ', 'lightweight professional black Racket with cover', 1100, 'Yonex', 'Resources/2nd img.jpg', 1, '2026-05-19 09:44:42', '2026-05-19 09:44:42'),
 (16, 'Yonex Astrox 100ZZ', 'lightweight beginner Racket', 50, 'Tonex', 'Resources/5 img.jpg', 3, '2026-05-19 09:48:06', '2026-05-19 09:48:06'),
 (19, 'Keiro 340', 'orange high tension racket', 300, 'Key', 'Resources/4 img.jpeg', 2, '2026-05-19 10:05:39', '2026-05-19 10:05:39'),
-(20, 'Net Shuttle V2', 'fast and plastic', 50, 'Victor', 'Resources/sh 1.jpeg', 6, '2026-05-19 10:12:15', '2026-05-19 10:12:15'),
-(21, 'Y-33 Shuttle', 'Durable, fast paced plastic shuttles', 200, 'Yonex', 'Resources/sh 2.jpg', 5, '2026-05-19 10:13:18', '2026-05-19 10:13:18');
+(20, 'Net Shuttle V2', 'fast and plastic', 50, 'Victor', 'Resources/sh 1.jpeg', 6, '2026-05-19 10:12:15', '2026-05-19 10:12:15');
 
 -- --------------------------------------------------------
 
@@ -158,8 +167,13 @@ INSERT INTO `users` (`userID`, `name`, `email`, `password`, `role`, `address`, `
 (4, 'Admin', 'admin@sm.com', '$2a$10$i7dwTSnBf/afglFR23fJMO1fKGA9lx57zhufmZAcx.hCC73zu8dsW', 'Admin', 'Pkr', '9856020743', '2026-05-16 08:05:51', '2026-05-16 10:26:52'),
 (5, 'Tester', 'test@sm.com', '$2a$10$ui4N7xDOLnyNjxZsWJhi1.9ESB4m1Xx9VYZGkhe6WGkAtTclJhkkO', 'Buyer', 'Pokahra', '9856020743', '2026-05-16 11:36:03', '2026-05-16 11:36:03'),
 (6, 'Tester', 'test@smashmart.com', '$2a$10$Gmkc9aa.ipOJ3ZxydMUccu7o7l9aHzbmFwtSCKHJXoAYRKwhvEzCG', 'Buyer', 'Pokhara', '9800000000', '2026-05-17 04:18:34', '2026-05-17 04:18:34'),
-(7, 'RealAccount', 'Account@smash.com', '$2a$10$HPDPOve7UScSkcfp.Tmt8.9UGtolPKcb95B11jSahM.q7pR8KXG3K', 'Buyer', 'Pokhara', '9812345678', '2026-05-17 04:31:05', '2026-05-17 04:31:05'),
-(8, 'DBConnectivityCheck', 'DB@Smashmart.com', '$2a$10$Zr/kiMrs4PuuJs41A0Xr1eFP2.1QMOYRY4UBJypJAWTUoUBc84NgC', 'Buyer', 'Birauta', '9807654321', '2026-05-17 05:08:32', '2026-05-17 05:08:32');
+(7, 'RealAccount', 'Account@smash.com', '$2a$10$uV4XIKMUH38pQxA1YxsEYOuQnCXbrCRgyQVB8BS2QeVIidnNAf6bS', 'Buyer', 'Pokhara', '9812345678', '2026-05-17 04:31:05', '2026-05-20 16:02:23'),
+(8, 'DBConnectivityCheck', 'DB@Smashmart.com', '$2a$10$Zr/kiMrs4PuuJs41A0Xr1eFP2.1QMOYRY4UBJypJAWTUoUBc84NgC', 'Buyer', 'Birauta', '9807654321', '2026-05-17 05:08:32', '2026-05-17 05:08:32'),
+(10, 'Prasun Buddhacharya', 'b@gmail.com', 'Budd@123', 'Buyer', 'pkr', '9804106673', '2026-05-20 14:50:48', '2026-05-20 14:51:16'),
+(11, 'RealAccount', 'pb@gmail.com', '$2a$10$R6AqjYL622Rboaof9mBSveLhjZCFndMQiBi7pfxcNIfcUeAWk67wu', 'Buyer', 'Kathmandu', '9812345670', '2026-05-20 14:55:14', '2026-05-20 16:05:12'),
+(12, 'PrasunMan', 'pr@gmail.com', '$2a$10$3XEdPLbz/9gQ6V.xC.tpPesW95/12mC79FGDSIgN1qlzTcAC0ObZ.', 'Buyer', 'Pokhara', '9804106677', '2026-05-20 16:21:20', '2026-05-20 16:21:20'),
+(13, 'PrasunMan', 'buddhacharya00000@gmail.com', '$2a$10$7dj0JxbI9EH.ka2.rnnLgeyCoGxo5peqgbxFDSxEu1MoNCwi.vbVi', 'Buyer', 'KTM', '9823456781', '2026-05-20 16:22:49', '2026-05-20 16:22:59'),
+(14, 'FinalTest', 'FT@gmail.com', '$2a$10$uSTW7mfKiK7ZgGtg/ouUZe0rJr0u3ST51Q51gMBYe9IqNBk.A8UWm', 'Buyer', 'Pokhara', '9800000001', '2026-05-21 03:45:43', '2026-05-21 03:46:37');
 
 --
 -- Indexes for dumped tables
@@ -215,25 +229,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `orderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `orderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

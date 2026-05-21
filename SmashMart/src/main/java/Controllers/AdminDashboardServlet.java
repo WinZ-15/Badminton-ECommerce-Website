@@ -55,7 +55,7 @@ public class AdminDashboardServlet extends HttpServlet {
             request.setAttribute("totalOrders", totalOrders);
             request.setAttribute("totalRevenue", totalRevenue);
 
-            //  FORWARD TO CORRECT PAGE
+            //  FORWARD TO DASHBOARD PAGE
             RequestDispatcher rd = request.getRequestDispatcher("Pages/adminDashboard.jsp");
             rd.forward(request, response);
 

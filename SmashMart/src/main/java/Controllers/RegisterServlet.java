@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
 
-        // 1. Validate empty fields
+        //  Validate empty fields
         if (ValidationUtil.isNullOrEmpty(name)
                 || ValidationUtil.isNullOrEmpty(email)
                 || ValidationUtil.isNullOrEmpty(password)
@@ -42,35 +42,35 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-//  Name
+        //  Name
         if (!ValidationUtil.isAlphanumericStartingWithLetter(name)) {
             request.setAttribute("error", "Name must start with a letter and contain only letters and numbers");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        //2. email
+        // email
         if (!ValidationUtil.isValidEmail(email)) {
             request.setAttribute("error", "Invalid email format");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        // 3. Password 
+        // Password 
         if (!ValidationUtil.isValidPassword(password)) {
             request.setAttribute("error", "Password must contain uppercase, number, special character and be at least 6 characters");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        // 4.  password Check
+        // password Check
         if (!ValidationUtil.doPasswordsMatch(password, confirmPassword)) {
             request.setAttribute("error", "Passwords do not match");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
-        // 5. Phone 
+        // Phone 
         if (!ValidationUtil.isNullOrEmpty(phone)
                 && !ValidationUtil.isValidPhoneNumber(phone)) {
 
